@@ -244,14 +244,19 @@ a {
     #090b10;
 }
 
+.hero {
+  --portrait-top: 25svh;
+  --portrait-height: 90svh;
+}
+
 .hero-portrait {
   position: absolute;
   z-index: 2;
-  top: -15svh;
+  top: var(--portrait-top);
   left: 50%;
 
   width: auto;
-  height: 128svh;
+  height: var(--portrait-height);
   max-width: none;
 
   transform: translateX(-50%);
@@ -267,6 +272,27 @@ a {
     black 62%,
     transparent 100%
   );
+}
+
+.hero-logo {
+  position: absolute;
+  z-index: 5;
+  top: 8svh;
+  left: 50%;
+
+  width: min(1000px, 78vw);
+  height: auto;
+
+  transform: translateX(-50%);
+}
+
+/* sits above the shading so the logo can stay pure white; fades out
+   toward the bottom so the lower face blends into the shaded photo */
+.hero-portrait-front {
+  z-index: 6;
+
+  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 80%);
+  mask-image: linear-gradient(to bottom, black 45%, transparent 80%);
 }
 
 .hero-overlay {
@@ -324,7 +350,7 @@ a {
 
 .hero-scroll {
   position: absolute;
-  z-index: 5;
+  z-index: 7;
 
   left: 5vw;
   bottom: 35px;
@@ -349,28 +375,6 @@ a {
     var(--dietro-blue),
     var(--dietro-red)
   );
-}
-
-.section-logo {
-  position: relative;
-  z-index: 10;
-
-  height: 0;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-
-  pointer-events: none;
-}
-
-.section-logo img {
-  width: min(460px, 70vw);
-  height: auto;
-
-  transform: translateY(-50%);
-
-  filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.6));
 }
 
 /* ================================
@@ -1223,6 +1227,12 @@ a {
 }
 
 @media (max-width: 550px) {
+  .hero-logo {
+    top: 14svh;
+
+    width: 84vw;
+  }
+
   .nav-logo {
     height: 44px;
   }

@@ -15,10 +15,6 @@ function App() {
       <main>
         <Hero />
 
-        <div className="section-logo" aria-hidden="true">
-          <img src="/media/branding/dietro-logo.png" alt="" />
-        </div>
-
         <About />
         <References />
         <Music />
