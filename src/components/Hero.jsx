@@ -17,11 +17,6 @@ function Hero() {
       <div className="hero-grain" />
 
       <h1 className="visually-hidden">Diètro</h1>
-
-      <div className="hero-scroll">
-        <span>SCROLL TO DISCOVER</span>
-        <div />
-      </div>
     </section>
   );
 }

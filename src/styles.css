@@ -416,36 +416,6 @@ a {
   white-space: nowrap;
 }
 
-
-.hero-scroll {
-  position: absolute;
-  z-index: 8;
-
-  left: 5vw;
-  bottom: 35px;
-
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  color: rgba(255, 255, 255, 0.4);
-
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-}
-
-.hero-scroll div {
-  width: 75px;
-  height: 1px;
-
-  background: linear-gradient(
-    90deg,
-    var(--dietro-blue),
-    var(--dietro-red)
-  );
-}
-
 /* ================================
    GENERAL
 ================================ */
@@ -1228,10 +1198,6 @@ a {
     display: none;
   }
 
-  .hero-scroll {
-    left: 22px;
-  }
-
   .about-header {
     grid-template-columns: 1fr;
 
@@ -1298,10 +1264,6 @@ a {
 @media (max-width: 550px) {
   .nav-logo {
     height: 44px;
-  }
-
-  .hero-scroll span {
-    display: none;
   }
 
   .about-details {
