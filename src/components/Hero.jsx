@@ -9,25 +9,15 @@ function Hero() {
         />
       </div>
 
-      <img
-        className="hero-logo"
-        src="/media/branding/dietro-logo.png"
-        alt=""
-        aria-hidden="true"
-      />
-
-      {/* cut-out of Diètro on top of the logo, so the logo sits behind the head */}
-      <img
-        className="hero-portrait hero-portrait-front"
-        src="/media/hero/main-presspic-front.webp"
-        alt=""
-        aria-hidden="true"
-      />
-
       <div className="hero-overlay" />
 
       <div className="hero-red-light" />
       <div className="hero-blue-light" />
+
+      {/* logo lit like the photo: blue on the left, red on the right */}
+      <div className="hero-logo" aria-hidden="true">
+        <div className="hero-logo-fill" />
+      </div>
 
       <h1 className="visually-hidden">Diètro</h1>
 

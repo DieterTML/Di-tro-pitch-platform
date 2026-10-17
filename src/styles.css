@@ -245,8 +245,8 @@ a {
 }
 
 .hero {
-  --portrait-top: 25svh;
-  --portrait-height: 90svh;
+  --portrait-top: -15svh;
+  --portrait-height: 128svh;
 }
 
 .hero-portrait {
@@ -277,22 +277,32 @@ a {
 .hero-logo {
   position: absolute;
   z-index: 5;
-  top: 8svh;
+  bottom: 5svh;
   left: 50%;
 
-  width: min(1000px, 78vw);
-  height: auto;
+  width: min(560px, 70vw);
 
   transform: translateX(-50%);
+
+  /* soft glow in the same two colours */
+  filter:
+    drop-shadow(-12px 0 28px rgba(0, 118, 255, 0.45))
+    drop-shadow(12px 0 28px rgba(255, 0, 26, 0.45));
 }
 
-/* sits above the shading so the logo can stay pure white; fades out
-   toward the bottom so the lower face blends into the shaded photo */
-.hero-portrait-front {
-  z-index: 6;
+.hero-logo-fill {
+  aspect-ratio: 760 / 310;
 
-  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 80%);
-  mask-image: linear-gradient(to bottom, black 45%, transparent 80%);
+  background: linear-gradient(
+    90deg,
+    var(--dietro-blue) 0%,
+    var(--dietro-blue) 44%,
+    var(--dietro-red) 56%,
+    var(--dietro-red) 100%
+  );
+
+  -webkit-mask: url("/media/branding/dietro-logo.png") center / contain no-repeat;
+  mask: url("/media/branding/dietro-logo.png") center / contain no-repeat;
 }
 
 .hero-overlay {
@@ -1228,9 +1238,7 @@ a {
 
 @media (max-width: 550px) {
   .hero-logo {
-    top: 14svh;
-
-    width: 84vw;
+    width: 80vw;
   }
 
   .nav-logo {
