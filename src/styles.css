@@ -291,7 +291,7 @@ a {
   width: min(520px, 72vw);
   height: auto;
 
-  transform: translateY(-50%);
+  transform: translateY(-68%);
 
   filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.6));
 
@@ -391,7 +391,7 @@ a {
 @keyframes hero-logo-on {
   0% {
     opacity: 0;
-    transform: translateY(-50%) scale(1.04);
+    transform: translateY(-68%) scale(1.04);
   }
 
   8% {
@@ -413,7 +413,7 @@ a {
   36%,
   100% {
     opacity: 1;
-    transform: translateY(-50%) scale(1);
+    transform: translateY(-68%) scale(1);
   }
 }
 
