@@ -31,8 +31,13 @@ function Navbar() {
         <button
           className="nav-brand"
           onClick={() => scrollToSection("home")}
+          aria-label="Diètro — back to top"
         >
-          DIÈTRO
+          <img
+            className="nav-logo"
+            src="/media/branding/dietro-logo.png"
+            alt=""
+          />
         </button>
 
         <nav className="desktop-nav">
