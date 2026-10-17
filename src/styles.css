@@ -232,7 +232,7 @@ a {
 .hero-portrait {
   position: absolute;
   z-index: 2;
-  top: 0;
+  top: -22svh;
   left: 50%;
 
   width: auto;
