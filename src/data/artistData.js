@@ -4,8 +4,8 @@ export const artistData = {
   country: "BELGIUM",
 
   colors: {
-    blue: "#007fff",
-    red: "#ff002a",
+    blue: "#0076ff",
+    red: "#ff001a",
   },
 
   bio: "",

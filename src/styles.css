@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 :root {
-  --dietro-blue: #007fff;
-  --dietro-red: #ff002a;
+  --dietro-blue: #0076ff;
+  --dietro-red: #ff001a;
 
   --black: #030407;
   --soft-black: #080a0f;
@@ -218,12 +218,12 @@ a {
   background:
     radial-gradient(
       circle at 20% 60%,
-      rgba(255, 0, 42, 0.2),
+      rgba(0, 118, 255, 0.2),
       transparent 32%
     ),
     radial-gradient(
       circle at 80% 45%,
-      rgba(0, 127, 255, 0.22),
+      rgba(255, 0, 26, 0.22),
       transparent 35%
     ),
     #090b10;
@@ -232,11 +232,11 @@ a {
 .hero-portrait {
   position: absolute;
   z-index: 2;
-  top: -22svh;
+  top: -15svh;
   left: 50%;
 
   width: auto;
-  height: 138svh;
+  height: 128svh;
   max-width: none;
 
   transform: translateX(-50%);
@@ -278,16 +278,16 @@ a {
 
 .hero-red-light {
   background: radial-gradient(
-    circle at 5% 70%,
-    rgba(255, 0, 42, 0.34),
+    circle at 95% 70%,
+    rgba(255, 0, 26, 0.34),
     transparent 30%
   );
 }
 
 .hero-blue-light {
   background: radial-gradient(
-    circle at 95% 45%,
-    rgba(0, 127, 255, 0.32),
+    circle at 5% 45%,
+    rgba(0, 118, 255, 0.32),
     transparent 30%
   );
 }
@@ -396,8 +396,8 @@ a {
 
   background: linear-gradient(
     90deg,
-    var(--dietro-red),
-    var(--dietro-blue)
+    var(--dietro-blue),
+    var(--dietro-red)
   );
 }
 
@@ -434,8 +434,8 @@ a {
 .gradient-text {
   background: linear-gradient(
     90deg,
-    var(--dietro-red),
-    var(--dietro-blue)
+    var(--dietro-blue),
+    var(--dietro-red)
   );
 
   -webkit-background-clip: text;
@@ -551,12 +551,12 @@ a {
   background:
     radial-gradient(
       circle at 15% 60%,
-      rgba(255, 0, 42, 0.13),
+      rgba(0, 118, 255, 0.13),
       transparent 30%
     ),
     radial-gradient(
       circle at 85% 40%,
-      rgba(0, 127, 255, 0.15),
+      rgba(255, 0, 26, 0.15),
       transparent 30%
     ),
     #0c0e13;
@@ -623,12 +623,12 @@ a {
   background:
     radial-gradient(
       circle at 20% 80%,
-      rgba(255, 0, 42, 0.08),
+      rgba(0, 118, 255, 0.08),
       transparent 40%
     ),
     radial-gradient(
       circle at 80% 20%,
-      rgba(0, 127, 255, 0.08),
+      rgba(255, 0, 26, 0.08),
       transparent 40%
     ),
     #101218;
@@ -732,12 +732,12 @@ a {
   background:
     radial-gradient(
       circle at 15% 50%,
-      rgba(255, 0, 42, 0.18),
+      rgba(0, 118, 255, 0.18),
       transparent 30%
     ),
     radial-gradient(
       circle at 85% 50%,
-      rgba(0, 127, 255, 0.18),
+      rgba(255, 0, 26, 0.18),
       transparent 30%
     ),
     #090b10;
@@ -941,12 +941,12 @@ a {
   background:
     radial-gradient(
       circle at 0% 50%,
-      rgba(255, 0, 42, 0.12),
+      rgba(0, 118, 255, 0.12),
       transparent 30%
     ),
     radial-gradient(
       circle at 100% 50%,
-      rgba(0, 127, 255, 0.12),
+      rgba(255, 0, 26, 0.12),
       transparent 30%
     ),
     #07090d;
@@ -1039,14 +1039,14 @@ a {
 }
 
 .contact-red {
-  left: -25vw;
+  right: -25vw;
   bottom: -25vw;
 
   background: var(--dietro-red);
 }
 
 .contact-blue {
-  right: -25vw;
+  left: -25vw;
   top: -25vw;
 
   background: var(--dietro-blue);
@@ -1068,8 +1068,8 @@ a {
 .contact-content h2 span {
   background: linear-gradient(
     90deg,
-    var(--dietro-red),
-    var(--dietro-blue)
+    var(--dietro-blue),
+    var(--dietro-red)
   );
 
   -webkit-background-clip: text;
