@@ -1,18 +1,20 @@
 import { Play } from "lucide-react";
 import { artistData } from "../data/artistData";
 
-function Live() {
+function References() {
   return (
     <>
-      <section className="section live-section" id="live">
+      <section className="section live-section" id="references">
+        <div className="section-index">02</div>
+
         <div className="section-header">
           <div>
-            <p className="eyebrow">SELECTED MOMENTS</p>
-            <h2 className="huge-title">LIVE.</h2>
+            <p className="eyebrow">SELECTED SHOWS & MOMENTS</p>
+            <h2 className="huge-title">REFERENCES.</h2>
           </div>
 
           <p className="section-intro">
-            Selected 2026 highlights will be added here.
+            Selected 2026 shows, festivals and highlights will be added here.
           </p>
         </div>
 
@@ -69,4 +71,4 @@ function Live() {
   );
 }
 
-export default Live;
+export default References;

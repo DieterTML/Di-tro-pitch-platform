@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Live from "./components/Live";
+import References from "./components/References";
 import Music from "./components/Music";
 import Videos from "./components/Videos";
 import Contact from "./components/Contact";
@@ -16,7 +16,7 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Live />
+        <References />
         <Music />
         <Videos />
         <Contact />

@@ -36,10 +36,9 @@ function Navbar() {
         </button>
 
         <nav className="desktop-nav">
-          <button onClick={() => scrollToSection("about")}>ABOUT</button>
-          <button onClick={() => scrollToSection("live")}>LIVE</button>
+          <button onClick={() => scrollToSection("about")}>WHO IS DIÈTRO?</button>
+          <button onClick={() => scrollToSection("references")}>REFERENCES</button>
           <button onClick={() => scrollToSection("music")}>MUSIC</button>
-          <button onClick={() => scrollToSection("videos")}>VIDEOS</button>
           <button onClick={() => scrollToSection("contact")}>CONTACT</button>
         </nav>
 
@@ -62,10 +61,9 @@ function Navbar() {
         </button>
 
         <div className="mobile-links">
-          <button onClick={() => scrollToSection("about")}>ABOUT</button>
-          <button onClick={() => scrollToSection("live")}>LIVE</button>
+          <button onClick={() => scrollToSection("about")}>WHO IS DIÈTRO?</button>
+          <button onClick={() => scrollToSection("references")}>REFERENCES</button>
           <button onClick={() => scrollToSection("music")}>MUSIC</button>
-          <button onClick={() => scrollToSection("videos")}>VIDEOS</button>
           <button onClick={() => scrollToSection("contact")}>CONTACT</button>
         </div>
       </div>

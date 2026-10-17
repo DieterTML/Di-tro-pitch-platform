@@ -5,6 +5,8 @@ function Music() {
   return (
     <>
       <section className="section music-section" id="music">
+        <div className="section-index">03</div>
+
         <div className="section-header">
           <div>
             <p className="eyebrow">SELECTED RELEASES</p>

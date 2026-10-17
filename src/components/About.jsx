@@ -10,9 +10,9 @@ function About() {
           <p className="eyebrow">THE ARTIST</p>
 
           <h2 className="huge-title">
-            THIS IS
+            WHO IS
             <br />
-            <span className="gradient-text">DIÈTRO.</span>
+            <span className="gradient-text">DIÈTRO?</span>
           </h2>
         </div>
 

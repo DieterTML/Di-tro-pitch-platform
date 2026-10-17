@@ -3,7 +3,7 @@ import { artistData } from "../data/artistData";
 
 function Videos() {
   return (
-    <section className="section videos-section" id="videos">
+    <section className="section videos-section">
       <div className="section-header">
         <div>
           <p className="eyebrow">WATCH</p>
