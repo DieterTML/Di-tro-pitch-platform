@@ -1,5 +1,4 @@
 import { ArrowDown } from "lucide-react";
-import { artistData } from "../data/artistData";
 
 function Hero() {
   const scrollDown = () => {
@@ -25,12 +24,6 @@ function Hero() {
 
       <div className="hero-content">
         <h1 className="visually-hidden">Diètro</h1>
-
-        <div className="hero-meta">
-          <span>{artistData.role}</span>
-          <span className="hero-dot" />
-          <span>{artistData.country}</span>
-        </div>
 
         <button
           className="discover-button"
