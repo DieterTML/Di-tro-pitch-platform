@@ -13,7 +13,7 @@ function Hero() {
       <div className="hero-media">
         <img
           className="hero-portrait"
-          src="/media/hero/main-presspic-cutout.webp"
+          src="/media/hero/main-presspic-hero.jpg"
           alt="Diètro"
         />
       </div>

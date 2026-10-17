@@ -232,14 +232,26 @@ a {
 .hero-portrait {
   position: absolute;
   z-index: 2;
-  top: 2svh;
+  top: 0;
   left: 50%;
 
   width: auto;
-  height: 120svh;
+  height: 138svh;
   max-width: none;
 
   transform: translateX(-50%);
+
+  /* fade the photo's edges into the page so there's no visible frame */
+  -webkit-mask-image: radial-gradient(
+    ellipse 50% 62% at 50% 40%,
+    black 62%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 50% 62% at 50% 40%,
+    black 62%,
+    transparent 100%
+  );
 }
 
 .hero-overlay {
