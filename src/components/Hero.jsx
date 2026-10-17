@@ -14,10 +14,7 @@ function Hero() {
       <div className="hero-red-light" />
       <div className="hero-blue-light" />
 
-      {/* logo lit like the photo: blue on the left, red on the right */}
-      <div className="hero-logo" aria-hidden="true">
-        <div className="hero-logo-fill" />
-      </div>
+      <div className="hero-grain" />
 
       <h1 className="visually-hidden">Diètro</h1>
 

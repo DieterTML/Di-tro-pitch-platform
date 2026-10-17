@@ -274,35 +274,168 @@ a {
   );
 }
 
-.hero-logo {
-  position: absolute;
-  z-index: 5;
-  bottom: 5svh;
-  left: 50%;
+.section-logo {
+  position: relative;
+  z-index: 10;
 
-  width: min(560px, 70vw);
+  height: 0;
 
-  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 
-  /* soft glow in the same two colours */
-  filter:
-    drop-shadow(-12px 0 28px rgba(0, 118, 255, 0.45))
-    drop-shadow(12px 0 28px rgba(255, 0, 26, 0.45));
+  pointer-events: none;
 }
 
-.hero-logo-fill {
-  aspect-ratio: 760 / 310;
+.section-logo img {
+  width: min(520px, 72vw);
+  height: auto;
 
-  background: linear-gradient(
-    90deg,
-    var(--dietro-blue) 0%,
-    var(--dietro-blue) 44%,
-    var(--dietro-red) 56%,
-    var(--dietro-red) 100%
-  );
+  transform: translateY(-50%);
 
-  -webkit-mask: url("/media/branding/dietro-logo.png") center / contain no-repeat;
-  mask: url("/media/branding/dietro-logo.png") center / contain no-repeat;
+  filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.6));
+
+  animation: hero-logo-on 1.3s ease-out 1.3s both;
+}
+
+/* fine moving film grain over the whole hero */
+.hero-grain {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  opacity: 0.07;
+
+  /* fade out toward the bottom so there's no edge at the next section */
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+
+  animation: hero-grain 0.9s steps(6) infinite;
+}
+
+/* ---------- hero entrance + ambient motion ---------- */
+
+.hero-media {
+  animation: hero-drift 24s ease-in-out 2.4s infinite alternate;
+}
+
+.hero-portrait {
+  animation: hero-reveal 2.4s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+.hero-blue-light {
+  animation:
+    hero-light-left 1.8s ease-out 0.3s both,
+    hero-breathe 5s ease-in-out 2.1s infinite alternate;
+}
+
+.hero-red-light {
+  animation:
+    hero-light-right 1.8s ease-out 0.5s both,
+    hero-breathe 5s ease-in-out 2.8s infinite alternate;
+}
+
+.hero-scroll {
+  animation: hero-fade-in 1s ease-out 2.6s both;
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    filter: brightness(0.15) blur(10px);
+    transform: translateX(-50%) scale(1.08);
+  }
+
+  to {
+    opacity: 1;
+    filter: none;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes hero-light-left {
+  from {
+    opacity: 0;
+    transform: translateX(-35%);
+  }
+}
+
+@keyframes hero-light-right {
+  from {
+    opacity: 0;
+    transform: translateX(35%);
+  }
+}
+
+@keyframes hero-breathe {
+  to {
+    opacity: 0.55;
+  }
+}
+
+/* switches on like a stage light: a couple of flickers, then steady */
+@keyframes hero-logo-on {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(1.04);
+  }
+
+  8% {
+    opacity: 0.9;
+  }
+
+  12% {
+    opacity: 0;
+  }
+
+  22% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.25;
+  }
+
+  36%,
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@keyframes hero-grain {
+  0% { background-position: 0 0; }
+  20% { background-position: -37px 23px; }
+  40% { background-position: 29px -51px; }
+  60% { background-position: -61px -17px; }
+  80% { background-position: 47px 41px; }
+  100% { background-position: -13px 59px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-media,
+  .hero-portrait,
+  .hero-blue-light,
+  .hero-red-light,
+  .hero-scroll,
+  .section-logo img,
+  .hero-grain {
+    animation: none;
+  }
 }
 
 .hero-overlay {
@@ -313,8 +446,9 @@ a {
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.15),
-    rgba(3, 4, 7, 0.92)
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(3, 4, 7, 0.92) 88%,
+    var(--black)
   );
 }
 
@@ -360,7 +494,7 @@ a {
 
 .hero-scroll {
   position: absolute;
-  z-index: 7;
+  z-index: 8;
 
   left: 5vw;
   bottom: 35px;
@@ -1237,10 +1371,6 @@ a {
 }
 
 @media (max-width: 550px) {
-  .hero-logo {
-    width: 80vw;
-  }
-
   .nav-logo {
     height: 44px;
   }
