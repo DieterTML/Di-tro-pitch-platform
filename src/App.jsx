@@ -3,7 +3,6 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import References from "./components/References";
 import Music from "./components/Music";
-import Videos from "./components/Videos";
 import Contact from "./components/Contact";
 
 import "./styles.css";
@@ -18,7 +17,6 @@ function App() {
         <About />
         <References />
         <Music />
-        <Videos />
         <Contact />
       </main>
     </div>

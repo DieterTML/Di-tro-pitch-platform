@@ -36,15 +36,13 @@ function Hero() {
       <div className="hero-blue-light" />
 
       <div className="hero-content">
-        <div className="hero-logo-container">
+        <h1 className="hero-logo-container">
           <img
             className="hero-logo"
             src="/media/branding/dietro-logo.png"
             alt="Diètro"
           />
-
-          <h1>DIÈTRO</h1>
-        </div>
+        </h1>
 
         <div className="hero-meta">
           <span>{artistData.role}</span>

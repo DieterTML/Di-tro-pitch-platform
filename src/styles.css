@@ -302,21 +302,12 @@ a {
 }
 
 .hero-logo {
-  position: absolute;
-  z-index: 2;
+  display: block;
 
-  width: min(450px, 70vw);
-  max-height: 220px;
+  width: min(620px, 72vw);
+  height: auto;
 
-  object-fit: contain;
-}
-
-.hero-logo-container h1 {
-  font-size: clamp(85px, 15vw, 220px);
-  font-weight: 900;
-
-  letter-spacing: -0.08em;
-  line-height: 0.8;
+  background: transparent;
 }
 
 .hero-meta {
@@ -1007,125 +998,6 @@ a {
 }
 
 /* ================================
-   VIDEOS
-================================ */
-
-.videos-section {
-  background: var(--black);
-}
-
-.video-grid {
-  display: grid;
-
-  grid-template-columns: 1.5fr 1fr;
-  grid-template-rows: repeat(2, 330px);
-
-  gap: 14px;
-}
-
-.video-card {
-  position: relative;
-
-  overflow: hidden;
-
-  background:
-    radial-gradient(
-      circle at 20% 70%,
-      rgba(255, 0, 42, 0.08),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(0, 127, 255, 0.08),
-      transparent 35%
-    ),
-    #0d1016;
-}
-
-.video-card-featured {
-  grid-row: 1 / 3;
-}
-
-.video-card img {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  transition: transform 0.5s ease;
-}
-
-.video-card:hover img {
-  transform: scale(1.03);
-}
-
-.video-placeholder {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: rgba(255, 255, 255, 0.15);
-
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-}
-
-.video-overlay {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.85),
-    transparent 65%
-  );
-}
-
-.video-play {
-  position: absolute;
-  z-index: 3;
-
-  top: 25px;
-  right: 25px;
-
-  width: 50px;
-  height: 50px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-
-  transition: 0.25s ease;
-}
-
-.video-card:hover .video-play {
-  background: white;
-  color: black;
-}
-
-.video-card h3 {
-  position: absolute;
-  z-index: 3;
-
-  left: 25px;
-  bottom: 25px;
-
-  font-size: 13px;
-}
-
-/* ================================
    CONTACT
 ================================ */
 
@@ -1360,15 +1232,6 @@ a {
     border-bottom: 0;
   }
 
-  .video-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 380px);
-  }
-
-  .video-card-featured {
-    grid-row: auto;
-  }
-
   .contact-section {
     padding: 120px 22px 25px;
   }
@@ -1407,9 +1270,5 @@ a {
   .showreel-play {
     width: 80px;
     height: 80px;
-  }
-
-  .video-grid {
-    grid-template-rows: repeat(3, 300px);
   }
 }

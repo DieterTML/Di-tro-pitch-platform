@@ -70,24 +70,6 @@ export const artistData = {
     },
   ],
 
-  videos: [
-    {
-      title: "",
-      image: "/media/videos/video-01.jpg",
-      link: "",
-    },
-    {
-      title: "",
-      image: "/media/videos/video-02.jpg",
-      link: "",
-    },
-    {
-      title: "",
-      image: "/media/videos/video-03.jpg",
-      link: "",
-    },
-  ],
-
   contact: {
     email: "hello@dietromusic.com",
     phone: "+32 489 28 70 15",

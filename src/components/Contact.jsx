@@ -12,11 +12,7 @@ function Contact() {
           BOOKING & CONTACT
         </p>
 
-        <h2>
-          LET'S MAKE
-          <br />
-          <span>NOISE.</span>
-        </h2>
+        <h2>CONTACT.</h2>
 
         <p className="contact-types">
           FESTIVALS · CLUBS · EVENTS
