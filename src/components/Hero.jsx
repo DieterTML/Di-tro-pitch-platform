@@ -1,12 +1,4 @@
-import { ArrowDown } from "lucide-react";
-
 function Hero() {
-  const scrollDown = () => {
-    document.getElementById("about")?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
   return (
     <section className="hero" id="home">
       <div className="hero-media">
@@ -22,17 +14,7 @@ function Hero() {
       <div className="hero-red-light" />
       <div className="hero-blue-light" />
 
-      <div className="hero-content">
-        <h1 className="visually-hidden">Diètro</h1>
-
-        <button
-          className="discover-button"
-          onClick={scrollDown}
-        >
-          DISCOVER DIÈTRO
-          <ArrowDown size={17} />
-        </button>
-      </div>
+      <h1 className="visually-hidden">Diètro</h1>
 
       <div className="hero-scroll">
         <span>SCROLL TO DISCOVER</span>

@@ -4,12 +4,21 @@ import { Menu, X } from "lucide-react";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showLogo, setShowLogo] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
+
+      // only show the corner logo once the big logo between hero and
+      // "Who is Diètro?" has scrolled up behind the navbar
+      const sectionLogo = document.querySelector(".section-logo img");
+      setShowLogo(
+        sectionLogo ? sectionLogo.getBoundingClientRect().bottom < 70 : true
+      );
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -29,8 +38,9 @@ function Navbar() {
     <>
       <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         <button
-          className="nav-brand"
+          className={`nav-brand ${showLogo ? "nav-brand-visible" : ""}`}
           onClick={() => scrollToSection("home")}
+          tabIndex={showLogo ? 0 : -1}
           aria-label="Diètro — back to top"
         >
           <img
