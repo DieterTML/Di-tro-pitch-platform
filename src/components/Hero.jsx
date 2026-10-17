@@ -11,23 +11,11 @@ function Hero() {
   return (
     <section className="hero" id="home">
       <div className="hero-media">
-        <video
-          className="hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/media/hero/hero.jpg"
-        >
-          <source
-            src="/media/hero/hero-video.mp4"
-            type="video/mp4"
-          />
-        </video>
-
-        <div className="hero-placeholder">
-          HERO VIDEO / LIVE PHOTO
-        </div>
+        <img
+          className="hero-portrait"
+          src="/media/hero/main-presspic-cutout.webp"
+          alt="Diètro"
+        />
       </div>
 
       <div className="hero-overlay" />
@@ -37,13 +25,6 @@ function Hero() {
 
       <div className="hero-content">
         <h1 className="visually-hidden">Diètro</h1>
-
-        <div className="hero-portrait">
-          <img
-            src="/media/hero/main-presspic.jpg"
-            alt="Diètro"
-          />
-        </div>
 
         <div className="hero-meta">
           <span>{artistData.role}</span>
