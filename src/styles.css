@@ -294,8 +294,6 @@ a {
   transform: translateY(-68%);
 
   filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.6));
-
-  animation: hero-logo-on 1.3s ease-out 1.3s both;
 }
 
 /* fine moving film grain over the whole hero */
@@ -317,44 +315,18 @@ a {
   animation: hero-grain 0.9s steps(6) infinite;
 }
 
-/* ---------- hero entrance + ambient motion ---------- */
+/* ---------- hero ambient motion ---------- */
 
 .hero-media {
-  animation: hero-drift 24s ease-in-out 2.4s infinite alternate;
-}
-
-.hero-portrait {
-  animation: hero-reveal 2.4s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+  animation: hero-drift 24s ease-in-out infinite alternate;
 }
 
 .hero-blue-light {
-  animation:
-    hero-light-left 1.8s ease-out 0.3s both,
-    hero-breathe 5s ease-in-out 2.1s infinite alternate;
+  animation: hero-breathe 5s ease-in-out infinite alternate;
 }
 
 .hero-red-light {
-  animation:
-    hero-light-right 1.8s ease-out 0.5s both,
-    hero-breathe 5s ease-in-out 2.8s infinite alternate;
-}
-
-.hero-scroll {
-  animation: hero-fade-in 1s ease-out 2.6s both;
-}
-
-@keyframes hero-reveal {
-  from {
-    opacity: 0;
-    filter: brightness(0.15) blur(10px);
-    transform: translateX(-50%) scale(1.08);
-  }
-
-  to {
-    opacity: 1;
-    filter: none;
-    transform: translateX(-50%) scale(1);
-  }
+  animation: hero-breathe 5s ease-in-out 1.5s infinite alternate;
 }
 
 @keyframes hero-drift {
@@ -367,53 +339,9 @@ a {
   }
 }
 
-@keyframes hero-light-left {
-  from {
-    opacity: 0;
-    transform: translateX(-35%);
-  }
-}
-
-@keyframes hero-light-right {
-  from {
-    opacity: 0;
-    transform: translateX(35%);
-  }
-}
-
 @keyframes hero-breathe {
   to {
     opacity: 0.55;
-  }
-}
-
-/* switches on like a stage light: a couple of flickers, then steady */
-@keyframes hero-logo-on {
-  0% {
-    opacity: 0;
-    transform: translateY(-68%) scale(1.04);
-  }
-
-  8% {
-    opacity: 0.9;
-  }
-
-  12% {
-    opacity: 0;
-  }
-
-  22% {
-    opacity: 1;
-  }
-
-  26% {
-    opacity: 0.25;
-  }
-
-  36%,
-  100% {
-    opacity: 1;
-    transform: translateY(-68%) scale(1);
   }
 }
 
@@ -428,11 +356,8 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   .hero-media,
-  .hero-portrait,
   .hero-blue-light,
   .hero-red-light,
-  .hero-scroll,
-  .section-logo img,
   .hero-grain {
     animation: none;
   }
