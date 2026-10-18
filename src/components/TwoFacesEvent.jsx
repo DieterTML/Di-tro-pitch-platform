@@ -17,15 +17,15 @@ function TwoFacesEvent() {
   const embed = aftermovie ? youTubeEmbed(aftermovie) : null;
   const videoRef = useRef(null);
 
-  // play (muted, on a loop) only while the video is on screen
+  // play automatically (muted, on a loop) while the video is on screen
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reduceMotion) return;
+    // browsers only allow autoplay for muted videos; React doesn't always
+    // apply the muted attribute, so set it on the element directly
+    video.muted = true;
+    video.defaultMuted = true;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -35,7 +35,7 @@ function TwoFacesEvent() {
           video.pause();
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.25 }
     );
 
     observer.observe(video);
@@ -62,7 +62,7 @@ function TwoFacesEvent() {
             muted
             loop
             playsInline
-            preload="none"
+            preload="metadata"
             poster={poster}
             aria-label="2 FACES aftermovie"
           >

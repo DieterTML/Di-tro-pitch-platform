@@ -2,6 +2,24 @@ import { artistData } from "../data/artistData";
 import TwoFaces from "./TwoFaces";
 import TwoFacesEvent from "./TwoFacesEvent";
 
+// wraps the highlighted names (e.g. festivals) in the bio
+const highlight = (text) => {
+  const names = artistData.bioHighlights ?? [];
+  if (!names.length) return text;
+
+  const pattern = new RegExp(`(${names.join("|")})`, "g");
+
+  return text.split(pattern).map((part, index) =>
+    names.includes(part) ? (
+      <strong className="about-highlight" key={index}>
+        {part}
+      </strong>
+    ) : (
+      part
+    )
+  );
+};
+
 function About() {
   return (
     <section className="section about" id="about">
@@ -23,7 +41,7 @@ function About() {
         <div className="about-copy">
           <div className="about-story">
             {artistData.bio ? (
-              <p>{artistData.bio}</p>
+              <p className="about-intro">{highlight(artistData.bio)}</p>
             ) : (
               <>
                 <h3>NEW ARTIST STORY COMING SOON.</h3>

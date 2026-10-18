@@ -1054,6 +1054,28 @@ a {
   font-size: 14px;
 }
 
+/* the introduction: larger and brighter than regular body text */
+.about-story .about-intro {
+  margin-top: 0;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: clamp(15px, 1.35vw, 19px);
+  line-height: 1.75;
+}
+
+/* festival names: white, bold, with a blue-to-red underline */
+.about-highlight {
+  color: white;
+
+  font-weight: 800;
+
+  background: linear-gradient(90deg, var(--dietro-blue), var(--dietro-red))
+    no-repeat left bottom / 100% 2px;
+
+  padding-bottom: 2px;
+}
+
 .about-details {
   padding-left: 30px;
 

@@ -8,7 +8,10 @@ export const artistData = {
     red: "#ff001a",
   },
 
-  bio: "",
+  // introduction under "Who is Diètro?"; the names in bioHighlights are
+  // shown highlighted wherever they appear in the text
+  bio: "Diètro is a Belgian DJ and music producer known for his energetic performances and versatile sound. Having performed at iconic festivals such as Tomorrowland and Rock Werchter, he continues to make his mark on the electronic music scene. His music blends commercial dance and house with the darker sounds of techno and trance. Through his unique 2 FACES concept, Diètro brings two contrasting musical worlds together under one identity.",
+  bioHighlights: ["Tomorrowland", "Rock Werchter"],
 
   // "2 FACES": the two musical identities of Diètro. The genres match the
   // ones projected onto the face in the photo; blue is the left of the
