@@ -614,7 +614,7 @@ a {
   -webkit-mask-image: var(--flow), var(--edge);
   mask-image: var(--flow), var(--edge);
 
-  opacity: calc(var(--blue-strength) * 0.7);
+  opacity: calc(var(--blue-strength) * 0.45);
 }
 
 .two-faces-wash-red {
@@ -627,9 +627,36 @@ a {
   -webkit-mask-image: var(--flow), var(--edge);
   mask-image: var(--flow), var(--edge);
 
-  opacity: calc(var(--red-strength) * 0.7);
+  opacity: calc(var(--red-strength) * 0.45);
 }
 
+/* the other face (its half of the photo) fades to near-black as one
+   face takes over */
+.two-faces-dim {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: var(--black);
+}
+
+.two-faces-dim-red {
+  -webkit-mask-image: linear-gradient(90deg, transparent 42%, black 60%);
+  mask-image: linear-gradient(90deg, transparent 42%, black 60%);
+
+  opacity: calc(var(--blue-strength) * 0.9);
+}
+
+.two-faces-dim-blue {
+  -webkit-mask-image: linear-gradient(90deg, black 40%, transparent 58%);
+  mask-image: linear-gradient(90deg, black 40%, transparent 58%);
+
+  opacity: calc(var(--red-strength) * 0.9);
+}
+
+/* black fade from the lips down; it gets deeper once a face takes over */
 .two-faces-shade {
   position: absolute;
   z-index: 1;
@@ -644,6 +671,22 @@ a {
     rgba(3, 4, 7, 0.92) 88%,
     var(--black)
   );
+}
+
+.two-faces-shade::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 58%,
+    rgba(3, 4, 7, 0.9) 74%,
+    var(--black) 86%
+  );
+
+  opacity: var(--focus);
 }
 
 /* the line you drag */
@@ -753,6 +796,45 @@ a {
 
   align-items: flex-end;
   text-align: right;
+}
+
+/* the full story, from the lips down, once a face has taken over */
+.face-story {
+  position: absolute;
+  z-index: 3;
+  top: 76%;
+  left: 7%;
+  right: 7%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+}
+
+.face-story-red {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.face-story p {
+  max-width: 560px;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: clamp(11px, 1.6vw, 15px);
+  line-height: 1.6;
+}
+
+.face-story-blue .face-caption-name {
+  color: var(--dietro-blue);
+}
+
+.face-story-red .face-caption-name {
+  color: var(--dietro-red);
 }
 
 .face-caption-name {

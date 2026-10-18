@@ -27,6 +27,9 @@ export const artistData = {
         mood: "Darkness & Intensity",
         genres: ["Techno", "Electronic", "Trance"],
         line: "Where the lights go out. Deep, raw and relentless.",
+        // shown when the blue face takes over
+        story:
+          "Step into the darker side of Diètro. Driven by powerful basslines, driving rhythms and raw underground energy. A world where techno, trance and electronic sounds collide, pushing boundaries and taking the crowd on an intense musical journey.",
       },
       {
         side: "red",
@@ -34,6 +37,9 @@ export const artistData = {
         mood: "Energy & Emotion",
         genres: ["Dance", "House", "Pop"],
         line: "Where the energy rises. Euphoric, warm and full of emotion.",
+        // shown when the red face takes over
+        story:
+          "Step into the brighter side of Diètro. Driven by uplifting melodies, euphoric drops and pure energy. A world where dance, house and pop collide, lifting every room and leaving the crowd with a feeling that stays long after the last track.",
       },
     ],
   },

@@ -10,6 +10,10 @@ const clamp = (value) => Math.min(MAX, Math.max(MIN, value));
 // 0 in the middle, 1 when that face has taken over completely
 const takeover = (share) => Math.max(0, (share - 50) / (MAX - 50));
 
+// 0..1 over a range of the takeover, for fading things in and out
+const ramp = (value, from, to) =>
+  Math.min(1, Math.max(0, (value - from) / (to - from)));
+
 function TwoFaces() {
   const { intro, images, faces } = artistData.twoFaces;
 
@@ -53,6 +57,8 @@ function TwoFaces() {
 
   const blue = takeover(split);
   const red = takeover(100 - split);
+  const focus = Math.max(blue, red);
+  const strength = { blue, red };
 
   return (
     <div className="two-faces">
@@ -66,6 +72,7 @@ function TwoFaces() {
           "--split": `${split}%`,
           "--blue-strength": blue,
           "--red-strength": red,
+          "--focus": focus,
         }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -93,6 +100,10 @@ function TwoFaces() {
           draggable="false"
         />
 
+        {/* the face you drag away from goes dark */}
+        <div className="two-faces-dim two-faces-dim-red" />
+        <div className="two-faces-dim two-faces-dim-blue" />
+
         {/* black fade from the lips down, so the text reads clearly */}
         <div className="two-faces-shade" />
 
@@ -117,8 +128,8 @@ function TwoFaces() {
           <div
             className={`face-caption face-caption-${face.side}`}
             key={face.side}
-            // the face you drag away from steps back
-            style={{ opacity: 1 - 0.6 * (face.side === "blue" ? red : blue) }}
+            // the short captions make way once a face takes over
+            style={{ opacity: 1 - ramp(focus, 0.1, 0.4) }}
           >
             <span className="face-caption-name">{face.name}</span>
             <strong>{face.mood}</strong>
@@ -126,6 +137,19 @@ function TwoFaces() {
               {face.genres.join(" · ")}
             </span>
             <p>{face.line}</p>
+          </div>
+        ))}
+
+        {/* the full story of the face that has taken over */}
+        {faces.map((face) => (
+          <div
+            className={`face-story face-story-${face.side}`}
+            key={face.side}
+            style={{ opacity: ramp(strength[face.side], 0.35, 0.7) }}
+            aria-hidden={strength[face.side] < 0.35}
+          >
+            <span className="face-caption-name">{face.name}</span>
+            <p>{face.story}</p>
           </div>
         ))}
       </div>
