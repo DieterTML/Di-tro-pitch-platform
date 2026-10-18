@@ -11,21 +11,20 @@ export const artistData = {
   bio: "",
 
   // "2 FACES": the two sides of Diètro, matching the blue and red light
-  // on the press photo (blue on the left of the face, red on the right)
+  // on the photo (blue on the left of the face, red on the right). The
+  // genres are projected onto the face in the photo itself.
   twoFaces: {
-    tagline: "TWO FACES. ONE PULSE.",
+    image: "/media/two-faces/2-faces.jpg",
     faces: [
       {
         side: "blue",
         name: "BLUE FACE",
         mood: "Darkness & Intensity",
-        sound: ["Techno", "Trance", "Hypnotic"],
       },
       {
         side: "red",
         name: "RED FACE",
         mood: "Energy & Emotion",
-        sound: ["House", "Dance", "Festival"],
       },
     ],
   },

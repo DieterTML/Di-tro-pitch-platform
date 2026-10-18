@@ -517,44 +517,29 @@ a {
   width: 100%;
 }
 
-.two-faces-heading {
-  margin-bottom: 40px;
-
-  text-align: center;
-}
-
 .two-faces-title {
+  width: fit-content;
+  margin: 0 auto 40px;
+
+  /* the trailing letter-spacing would push the text off-centre */
+  padding-left: 0.18em;
+
   font-size: clamp(30px, 4.4vw, 64px);
   font-weight: 900;
 
   letter-spacing: 0.18em;
   line-height: 1;
-}
 
-/* the "2" is split blue / red, like the face */
-.two-faces-number {
   background: linear-gradient(
     90deg,
-    var(--dietro-blue) 0 50%,
-    var(--dietro-red) 50% 100%
+    var(--dietro-blue),
+    var(--dietro-red)
   );
 
   -webkit-background-clip: text;
   background-clip: text;
 
   color: transparent;
-
-  letter-spacing: 0;
-}
-
-.two-faces-tagline {
-  margin-top: 18px;
-
-  color: var(--grey);
-
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.45em;
 }
 
 .two-faces-split {
@@ -565,10 +550,10 @@ a {
 
   display: flex;
 
-  width: min(100%, 1000px);
+  width: min(100%, 720px);
   margin: 0 auto;
 
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 4 / 5;
 
   overflow: hidden;
 
@@ -591,7 +576,7 @@ a {
   position: absolute;
   inset: 0;
 
-  background-image: url("/media/hero/main-presspic-hero.jpg");
+  background-image: var(--two-faces-image);
   background-repeat: no-repeat;
   background-size: 100cqw auto;
 
@@ -603,11 +588,11 @@ a {
 }
 
 .face-panel-blue .face-panel-image {
-  background-position: left 40%;
+  background-position: left 50%;
 }
 
 .face-panel-red .face-panel-image {
-  background-position: right 40%;
+  background-position: right 50%;
 }
 
 .face-panel::after {
@@ -672,14 +657,6 @@ a {
   line-height: 1.1;
 }
 
-.face-panel-info small {
-  color: rgba(255, 255, 255, 0.55);
-
-  font-size: 10px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-}
-
 /* where the two faces meet */
 .two-faces-seam {
   position: absolute;
@@ -729,27 +706,9 @@ a {
 }
 
 @media (max-width: 700px) {
-  .two-faces-split {
-    aspect-ratio: 4 / 5;
-  }
-
-  .face-panel-image {
-    background-position-y: 20%;
-  }
-
-  .two-faces-tagline {
-    font-size: 9px;
-    letter-spacing: 0.3em;
-  }
-
   .face-panel-name {
     font-size: 9px;
     letter-spacing: 0.25em;
-  }
-
-  .face-panel-info small {
-    font-size: 8px;
-    letter-spacing: 0.12em;
   }
 }
 
