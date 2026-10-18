@@ -11,9 +11,6 @@ function Hero() {
 
       <div className="hero-overlay" />
 
-      <div className="hero-red-light" />
-      <div className="hero-blue-light" />
-
       <div className="hero-grain" />
 
       <h1 className="visually-hidden">Diètro</h1>
