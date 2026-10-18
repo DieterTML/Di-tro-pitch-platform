@@ -111,11 +111,11 @@ function TwoFaces() {
           className="two-faces-handle"
           role="slider"
           tabIndex={0}
-          aria-label="Switch between the blue face and the red face"
+          aria-label="Switch between the blue side and the red side"
           aria-valuemin={MIN}
           aria-valuemax={MAX}
           aria-valuenow={Math.round(split)}
-          aria-valuetext={`Blue face ${Math.round(split)}%, red face ${Math.round(100 - split)}%`}
+          aria-valuetext={`Blue side ${Math.round(split)}%, red side ${Math.round(100 - split)}%`}
           onKeyDown={handleKeyDown}
         >
           <span className="two-faces-knob">

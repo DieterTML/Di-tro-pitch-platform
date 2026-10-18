@@ -1,5 +1,6 @@
 import { artistData } from "../data/artistData";
 import TwoFaces from "./TwoFaces";
+import TwoFacesEvent from "./TwoFacesEvent";
 
 function About() {
   return (
@@ -19,6 +20,8 @@ function About() {
         </h2>
 
         <TwoFaces />
+
+        <TwoFacesEvent />
 
         <div className="about-copy">
           {artistData.bio ? (

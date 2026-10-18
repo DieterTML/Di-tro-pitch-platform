@@ -23,25 +23,47 @@ export const artistData = {
     faces: [
       {
         side: "blue",
-        name: "BLUE FACE",
+        name: "BLUE SIDE",
         mood: "Darkness & Intensity",
         genres: ["Techno", "Electronic", "Trance"],
         line: "Where the lights go out. Deep, raw and relentless.",
         // shown when the blue face takes over
         story:
-          "Step into the darker side of Diètro. Driven by powerful basslines, driving rhythms and raw underground energy. A world where techno, trance and electronic sounds collide, pushing boundaries and taking the crowd on an intense musical journey.",
+          "Step into the darker side of Diètro. A world where techno, trance and electronic sounds collide. Driven by powerful basslines, rhythms and raw underground energy.",
       },
       {
         side: "red",
-        name: "RED FACE",
+        name: "RED SIDE",
         mood: "Energy & Emotion",
         genres: ["Dance", "House", "Pop"],
         line: "Where the energy rises. Euphoric, warm and full of emotion.",
         // shown when the red face takes over
         story:
-          "Step into the brighter side of Diètro. Driven by uplifting melodies, euphoric drops and pure energy. A world where dance, house and pop collide, lifting every room and leaving the crowd with a feeling that stays long after the last track.",
+          "Discover the commercial side of Diètro. Filled with melodies, uplifting rhythms and feel-good energy. A place where dance, house and pop come together.",
       },
     ],
+
+    // the 2 FACES event (details from the event poster)
+    event: {
+      date: "02.05.2026",
+      day: "Saturday 2 May 2026",
+      venue: "Jeugdhuis New Gen",
+      artwork: "/media/two-faces/event-artwork.jpg",
+      intro:
+        "The concept, brought to life. One night, two stages, each with its own sound.",
+      stages: [
+        {
+          side: "red",
+          name: "RED STAGE",
+          artists: ["Boy&Girl", "Diètro", "Whosalp", "Denoo", "Boey", "Pandoa"],
+        },
+        {
+          side: "blue",
+          name: "BLUE STAGE",
+          artists: ["Double R", "M-Pulsive", "RVBBE"],
+        },
+      ],
+    },
   },
 
   stats: [

@@ -552,7 +552,7 @@ a {
   text-align: center;
 }
 
-/* the picture: red face underneath, blue face on top, cut off at --split */
+/* the picture: the photo, with blue and red washes on top that follow --split */
 .two-faces-frame {
   position: relative;
 
@@ -893,6 +893,181 @@ a {
   .two-faces-knob {
     width: 48px;
     height: 48px;
+  }
+}
+
+/* ================================
+   2 FACES — THE EVENT
+================================ */
+
+.two-faces-event {
+  width: min(100%, 1100px);
+  margin: 60px auto 0;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1fr;
+  align-items: center;
+
+  gap: clamp(36px, 6vw, 90px);
+}
+
+/* poster with a thin blue-to-red frame and glow */
+.event-artwork {
+  position: relative;
+
+  padding: 1px;
+
+  background: linear-gradient(135deg, var(--dietro-blue), var(--dietro-red));
+
+  box-shadow:
+    -30px 0 80px -30px rgba(0, 118, 255, 0.45),
+    30px 0 80px -30px rgba(255, 0, 26, 0.45);
+}
+
+.event-artwork img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+.event-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 22px;
+
+  font-size: clamp(38px, 5vw, 72px);
+  font-weight: 900;
+
+  line-height: 1;
+  letter-spacing: 0.06em;
+}
+
+.event-title span {
+  color: var(--grey);
+
+  font-size: 0.32em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+}
+
+.event-intro {
+  margin-top: 22px;
+  max-width: 440px;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.event-venue {
+  margin-top: 14px;
+
+  color: var(--grey);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.event-stages {
+  margin-top: 36px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.event-stage {
+  padding-left: 16px;
+
+  border-left: 2px solid;
+}
+
+.event-stage-red {
+  border-color: var(--dietro-red);
+}
+
+.event-stage-blue {
+  border-color: var(--dietro-blue);
+}
+
+.event-stage-name {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+}
+
+.event-stage-red .event-stage-name {
+  color: var(--dietro-red);
+}
+
+.event-stage-blue .event-stage-name {
+  color: var(--dietro-blue);
+}
+
+.event-stage ul {
+  margin-top: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  list-style: none;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.event-artist-self {
+  color: white;
+
+  font-weight: 800;
+}
+
+.event-facts {
+  margin-top: 40px;
+  padding-top: 26px;
+
+  display: flex;
+  gap: clamp(28px, 5vw, 60px);
+
+  border-top: 1px solid var(--border);
+}
+
+.event-facts div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.event-facts strong {
+  font-size: clamp(30px, 3.4vw, 46px);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.event-facts span {
+  color: var(--grey);
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+}
+
+@media (max-width: 800px) {
+  .two-faces-event {
+    grid-template-columns: 1fr;
+  }
+
+  .event-artwork {
+    width: min(100%, 420px);
+    margin: 0 auto;
   }
 }
 
