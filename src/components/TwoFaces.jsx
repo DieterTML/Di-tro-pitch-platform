@@ -7,15 +7,13 @@ const MAX = 94;
 
 const clamp = (value) => Math.min(MAX, Math.max(MIN, value));
 
-// 1 while a face is at least half the picture, fading to 0.35 as the
-// other face takes over
-const emphasis = (share) =>
-  share >= 50 ? 1 : 0.35 + 0.65 * Math.max(0, (share - MIN) / (50 - MIN));
+// 0 in the middle, 1 when that face has taken over completely
+const takeover = (share) => Math.max(0, (share - 50) / (MAX - 50));
 
 function TwoFaces() {
   const { intro, images, faces } = artistData.twoFaces;
 
-  // how much of the picture the blue face covers, in percent
+  // where the line sits, in percent from the left (= share of the blue face)
   const [split, setSplit] = useState(50);
   const frameRef = useRef(null);
   const dragging = useRef(false);
@@ -53,7 +51,8 @@ function TwoFaces() {
     }
   };
 
-  const share = { blue: split, red: 100 - split };
+  const blue = takeover(split);
+  const red = takeover(100 - split);
 
   return (
     <div className="two-faces">
@@ -63,7 +62,11 @@ function TwoFaces() {
       <div
         className="two-faces-frame"
         ref={frameRef}
-        style={{ "--split": `${split}%` }}
+        style={{
+          "--split": `${split}%`,
+          "--blue-strength": blue,
+          "--red-strength": red,
+        }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={stopDragging}
@@ -71,17 +74,27 @@ function TwoFaces() {
       >
         <img
           className="two-faces-image"
-          src={images.red}
-          alt="Diètro, half lit red with Dance, House and Pop projected on his face"
+          src={images.base}
+          alt="Diètro, half lit blue and half lit red, with his genres projected on his face"
           draggable="false"
         />
 
+        {/* colour washes that flow in from the side you drag toward */}
         <img
-          className="two-faces-image two-faces-image-blue"
+          className="two-faces-image two-faces-wash two-faces-wash-blue"
           src={images.blue}
-          alt="Diètro, half lit blue with Techno, Electronic and Trance projected on his face"
+          alt=""
           draggable="false"
         />
+        <img
+          className="two-faces-image two-faces-wash two-faces-wash-red"
+          src={images.red}
+          alt=""
+          draggable="false"
+        />
+
+        {/* black fade from the lips down, so the text reads clearly */}
+        <div className="two-faces-shade" />
 
         <div
           className="two-faces-handle"
@@ -99,14 +112,13 @@ function TwoFaces() {
             <ChevronRight size={18} />
           </span>
         </div>
-      </div>
 
-      <div className="two-faces-captions">
         {faces.map((face) => (
           <div
             className={`face-caption face-caption-${face.side}`}
             key={face.side}
-            style={{ opacity: emphasis(share[face.side]) }}
+            // the face you drag away from steps back
+            style={{ opacity: 1 - 0.6 * (face.side === "blue" ? red : blue) }}
           >
             <span className="face-caption-name">{face.name}</span>
             <strong>{face.mood}</strong>

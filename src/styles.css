@@ -591,16 +591,68 @@ a {
   );
 }
 
-.two-faces-image-blue {
-  clip-path: inset(0 calc(100% - var(--split)) 0 0);
+/* the washes: the original lighting stays, and the face you drag toward
+   flows in over it with a wide soft edge that trails the line */
+.two-faces-wash {
+  --edge: radial-gradient(
+    ellipse 56% 52% at 50% 44%,
+    black 68%,
+    transparent 100%
+  );
+
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+.two-faces-wash-blue {
+  --flow: linear-gradient(
+    90deg,
+    black calc(var(--split) - 35%),
+    transparent calc(var(--split) + 8%)
+  );
+
+  -webkit-mask-image: var(--flow), var(--edge);
+  mask-image: var(--flow), var(--edge);
+
+  opacity: calc(var(--blue-strength) * 0.7);
+}
+
+.two-faces-wash-red {
+  --flow: linear-gradient(
+    90deg,
+    transparent calc(var(--split) - 8%),
+    black calc(var(--split) + 35%)
+  );
+
+  -webkit-mask-image: var(--flow), var(--edge);
+  mask-image: var(--flow), var(--edge);
+
+  opacity: calc(var(--red-strength) * 0.7);
+}
+
+.two-faces-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    transparent 64%,
+    rgba(3, 4, 7, 0.7) 76%,
+    rgba(3, 4, 7, 0.92) 88%,
+    var(--black)
+  );
 }
 
 /* the line you drag */
 .two-faces-handle {
   position: absolute;
   z-index: 2;
-  top: 4%;
-  bottom: 4%;
+  top: 6%;
+  /* stops at the lips, where the text starts */
+  bottom: 24%;
   left: var(--split);
 
   width: 44px;
@@ -675,46 +727,30 @@ a {
   width: 5px;
 }
 
-/* the two faces, under the picture */
-.two-faces-captions {
-  position: relative;
-
-  width: min(100%, 720px);
-  margin: 10px auto 0;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-
-.two-faces-captions::before {
-  content: "";
-
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-
-  width: 1px;
-
-  background: linear-gradient(
-    to bottom,
-    var(--dietro-blue),
-    var(--dietro-red)
-  );
-
-  opacity: 0.5;
-}
-
+/* the two faces, written on the picture from the lips down */
 .face-caption {
+  position: absolute;
+  z-index: 3;
+  top: 77%;
+
+  width: 40%;
+
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+
+  pointer-events: none;
 
   transition: opacity 0.3s ease;
 }
 
+.face-caption-blue {
+  left: 6%;
+}
+
 .face-caption-red {
+  right: 6%;
+
   align-items: flex-end;
   text-align: right;
 }
@@ -734,7 +770,7 @@ a {
 }
 
 .face-caption strong {
-  font-size: clamp(17px, 2.2vw, 28px);
+  font-size: clamp(14px, 2.2vw, 26px);
   font-weight: 800;
   line-height: 1.15;
 }
@@ -747,17 +783,15 @@ a {
 }
 
 .face-caption p {
-  max-width: 280px;
-
-  color: var(--grey);
+  color: rgba(255, 255, 255, 0.7);
 
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 @media (max-width: 700px) {
-  .two-faces-captions {
-    gap: 24px;
+  .face-caption {
+    gap: 5px;
   }
 
   .face-caption-name {
@@ -771,7 +805,7 @@ a {
   }
 
   .face-caption p {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .two-faces-knob {

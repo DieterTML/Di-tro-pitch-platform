@@ -14,8 +14,9 @@ export const artistData = {
   // ones projected onto the face in the photo; blue is the left of the
   // face, red the right.
   twoFaces: {
-    intro: "Two musical identities. One artist.",
+    intro: "One person, two identities",
     images: {
+      base: "/media/two-faces/2-faces.jpg",
       blue: "/media/two-faces/2-faces-blue.jpg",
       red: "/media/two-faces/2-faces-red.jpg",
     },
@@ -25,14 +26,14 @@ export const artistData = {
         name: "BLUE FACE",
         mood: "Darkness & Intensity",
         genres: ["Techno", "Electronic", "Trance"],
-        line: "The underground side. Dark, hypnotic, relentless.",
+        line: "Where the lights go out. Deep, raw and relentless.",
       },
       {
         side: "red",
         name: "RED FACE",
         mood: "Energy & Emotion",
         genres: ["Dance", "House", "Pop"],
-        line: "The festival side. Euphoric, melodic, made for the crowd.",
+        line: "Where the energy rises. Euphoric, warm and full of emotion.",
       },
     ],
   },
