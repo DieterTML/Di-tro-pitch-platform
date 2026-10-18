@@ -1,69 +1,84 @@
+import { useEffect, useRef } from "react";
+import { Play } from "lucide-react";
 import { artistData } from "../data/artistData";
 
-function TwoFacesEvent() {
-  const { event } = artistData.twoFaces;
-  const artistCount = event.stages.reduce(
-    (total, stage) => total + stage.artists.length,
-    0
+// turns a YouTube watch / share link into an embeddable one
+const youTubeEmbed = (url) => {
+  const match = url.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/
   );
 
-  const facts = [
-    { value: event.stages.length, label: "STAGES" },
-    { value: artistCount, label: "ARTISTS" },
-    { value: 1, label: "NIGHT" },
-  ];
+  return match ? `https://www.youtube-nocookie.com/embed/${match[1]}` : null;
+};
+
+function TwoFacesEvent() {
+  const { details, aftermovie, poster, orientation } =
+    artistData.twoFaces.event;
+  const embed = aftermovie ? youTubeEmbed(aftermovie) : null;
+  const videoRef = useRef(null);
+
+  // play (muted, on a loop) only while the video is on screen
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduceMotion) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="two-faces-event">
-      <div className="event-artwork">
-        <img
-          src={event.artwork}
-          alt={`2 FACES event poster, ${event.day} at ${event.venue}`}
-        />
-      </div>
+      <h3 className="event-heading">THE EVENT</h3>
+      <p className="event-details">2 FACES · {details}</p>
 
-      <div className="event-info">
-        <p className="eyebrow">THE EVENT</p>
-
-        <h3 className="event-title">
-          2 FACES
-          <span>{event.date}</span>
-        </h3>
-
-        <p className="event-intro">{event.intro}</p>
-
-        <p className="event-venue">{event.venue}</p>
-
-        <div className="event-stages">
-          {event.stages.map((stage) => (
-            <div
-              className={`event-stage event-stage-${stage.side}`}
-              key={stage.side}
-            >
-              <span className="event-stage-name">{stage.name}</span>
-
-              <ul>
-                {stage.artists.map((artist) => (
-                  <li
-                    key={artist}
-                    className={artist === "Diètro" ? "event-artist-self" : ""}
-                  >
-                    {artist}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="event-facts">
-          {facts.map((fact) => (
-            <div key={fact.label}>
-              <strong>{fact.value}</strong>
-              <span>{fact.label}</span>
-            </div>
-          ))}
-        </div>
+      <div className={`event-video event-video-${orientation}`}>
+        {embed ? (
+          <iframe
+            src={embed}
+            title="2 FACES aftermovie"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : aftermovie ? (
+          <video
+            ref={videoRef}
+            controls
+            muted
+            loop
+            playsInline
+            preload="none"
+            poster={poster}
+            aria-label="2 FACES aftermovie"
+          >
+            <source src={aftermovie} type="video/mp4" />
+          </video>
+        ) : (
+          <div
+            className="event-video-placeholder"
+            style={{ backgroundImage: `url("${poster}")` }}
+          >
+            <span className="event-video-play">
+              <Play size={26} fill="currentColor" />
+            </span>
+            <span className="event-video-label">AFTERMOVIE COMING SOON</span>
+          </div>
+        )}
       </div>
     </div>
   );

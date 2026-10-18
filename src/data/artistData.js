@@ -24,7 +24,6 @@ export const artistData = {
       {
         side: "blue",
         name: "BLUE SIDE",
-        mood: "Darkness & Intensity",
         genres: ["Techno", "Electronic", "Trance"],
         line: "Where the lights go out. Deep, raw and relentless.",
         // shown when the blue face takes over
@@ -34,7 +33,6 @@ export const artistData = {
       {
         side: "red",
         name: "RED SIDE",
-        mood: "Energy & Emotion",
         genres: ["Dance", "House", "Pop"],
         line: "Where the energy rises. Euphoric, warm and full of emotion.",
         // shown when the red face takes over
@@ -43,26 +41,15 @@ export const artistData = {
       },
     ],
 
-    // the 2 FACES event (details from the event poster)
+    // the 2 FACES event. To show the aftermovie, either put the video in
+    // public/media/two-faces/ and set e.g. "/media/two-faces/aftermovie.mp4",
+    // or paste a YouTube link. Leave it empty to show "coming soon".
     event: {
-      date: "02.05.2026",
-      day: "Saturday 2 May 2026",
-      venue: "Jeugdhuis New Gen",
-      artwork: "/media/two-faces/event-artwork.jpg",
-      intro:
-        "The concept, brought to life. One night, two stages, each with its own sound.",
-      stages: [
-        {
-          side: "red",
-          name: "RED STAGE",
-          artists: ["Boy&Girl", "Diètro", "Whosalp", "Denoo", "Boey", "Pandoa"],
-        },
-        {
-          side: "blue",
-          name: "BLUE STAGE",
-          artists: ["Double R", "M-Pulsive", "RVBBE"],
-        },
-      ],
+      details: "02.05.2026 · Jeugdhuis New Gen",
+      aftermovie: "/media/two-faces/aftermovie.mp4",
+      poster: "/media/two-faces/aftermovie-poster.jpg",
+      // "portrait" for a vertical (phone) video, "landscape" for 16:9
+      orientation: "portrait",
     },
   },
 
