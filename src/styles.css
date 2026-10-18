@@ -144,6 +144,19 @@ a {
   color: white;
 }
 
+/* over the white hero photo (before scrolling), the menu turns dark */
+.navbar:not(.navbar-scrolled) .desktop-nav button {
+  color: rgba(3, 4, 7, 0.78);
+}
+
+.navbar:not(.navbar-scrolled) .desktop-nav button:hover {
+  color: var(--black);
+}
+
+.navbar:not(.navbar-scrolled) .menu-button {
+  color: var(--black);
+}
+
 .menu-button {
   display: none;
 
@@ -223,19 +236,22 @@ a {
 
   overflow: hidden;
 
-  background: #050609;
+  background: white;
 }
 
 .hero-media {
   position: absolute;
   inset: 0;
 
-  background: var(--black);
+  /* the photo's backdrop is pure white, so the sides blend into it */
+  background: white;
 }
 
 .hero {
-  --portrait-top: -15svh;
-  --portrait-height: 128svh;
+  --portrait-top: -5svh;
+  /* the image is 2560 x 2400 with the face centred; 125svh keeps the face
+     at the same size as a 100svh-tall 2:3 portrait */
+  --portrait-height: 125svh;
 }
 
 .hero-portrait {
@@ -250,16 +266,20 @@ a {
 
   transform: translateX(-50%);
 
-  /* fade the photo's edges into the page so there's no visible frame */
-  -webkit-mask-image: radial-gradient(
-    ellipse 50% 62% at 50% 40%,
-    black 62%,
-    transparent 100%
+  /* the photo's white has fine grain; fade its sides into the flat page white */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 18%,
+    black 82%,
+    transparent
   );
-  mask-image: radial-gradient(
-    ellipse 50% 62% at 50% 40%,
-    black 62%,
-    transparent 100%
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 18%,
+    black 82%,
+    transparent
   );
 }
 
@@ -319,11 +339,13 @@ a {
   z-index: 3;
   inset: 0;
 
+  /* white photo at the top, fading into the black page at the bottom */
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.15) 50%,
-    rgba(3, 4, 7, 0.92) 88%,
+    transparent 64%,
+    rgba(3, 4, 7, 0.3) 74%,
+    rgba(3, 4, 7, 0.75) 83%,
+    rgba(3, 4, 7, 0.96) 91%,
     var(--black)
   );
 }
