@@ -504,9 +504,253 @@ a {
 
   height: 1.3em;
   width: auto;
-  margin: 0 -0.05em 0 0.02em;
+  margin: 0 0.12em 0 0.02em;
 
   vertical-align: -0.12em;
+}
+
+/* ================================
+   2 FACES
+================================ */
+
+.two-faces {
+  width: 100%;
+}
+
+.two-faces-heading {
+  margin-bottom: 40px;
+
+  text-align: center;
+}
+
+.two-faces-title {
+  font-size: clamp(30px, 4.4vw, 64px);
+  font-weight: 900;
+
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+/* the "2" is split blue / red, like the face */
+.two-faces-number {
+  background: linear-gradient(
+    90deg,
+    var(--dietro-blue) 0 50%,
+    var(--dietro-red) 50% 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  letter-spacing: 0;
+}
+
+.two-faces-tagline {
+  margin-top: 18px;
+
+  color: var(--grey);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.45em;
+}
+
+.two-faces-split {
+  position: relative;
+
+  /* lets both halves size the photo to the full split width */
+  container-type: inline-size;
+
+  display: flex;
+
+  width: min(100%, 1000px);
+  margin: 0 auto;
+
+  aspect-ratio: 5 / 4;
+
+  overflow: hidden;
+
+  background: var(--black);
+}
+
+.face-panel {
+  position: relative;
+
+  flex: 1;
+
+  overflow: hidden;
+
+  transition: flex 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* one photo across both panels: blue panel anchors it left, red right,
+   so together they rebuild the full face */
+.face-panel-image {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/media/hero/main-presspic-hero.jpg");
+  background-repeat: no-repeat;
+  background-size: 100cqw auto;
+
+  filter: brightness(0.75) saturate(1.1);
+
+  transition:
+    filter 0.8s ease,
+    transform 1.2s ease;
+}
+
+.face-panel-blue .face-panel-image {
+  background-position: left 40%;
+}
+
+.face-panel-red .face-panel-image {
+  background-position: right 40%;
+}
+
+.face-panel::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+}
+
+.face-panel-blue::after {
+  background:
+    linear-gradient(to top, rgba(3, 4, 7, 0.95), transparent 55%),
+    radial-gradient(circle at 0% 60%, rgba(0, 118, 255, 0.35), transparent 55%);
+}
+
+.face-panel-red::after {
+  background:
+    linear-gradient(to top, rgba(3, 4, 7, 0.95), transparent 55%),
+    radial-gradient(circle at 100% 60%, rgba(255, 0, 26, 0.35), transparent 55%);
+}
+
+.face-panel-info {
+  position: absolute;
+  z-index: 2;
+  bottom: clamp(20px, 4vw, 48px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.face-panel-blue .face-panel-info {
+  left: clamp(18px, 4vw, 48px);
+}
+
+.face-panel-red .face-panel-info {
+  right: clamp(18px, 4vw, 48px);
+
+  align-items: flex-end;
+  text-align: right;
+}
+
+.face-panel-name {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.4em;
+}
+
+.face-panel-blue .face-panel-name {
+  color: var(--dietro-blue);
+}
+
+.face-panel-red .face-panel-name {
+  color: var(--dietro-red);
+}
+
+.face-panel-info strong {
+  font-size: clamp(16px, 2.3vw, 34px);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.face-panel-info small {
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* where the two faces meet */
+.two-faces-seam {
+  position: absolute;
+  z-index: 3;
+  top: 8%;
+  bottom: 8%;
+  left: 50%;
+
+  width: 1px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--dietro-blue),
+    var(--dietro-red),
+    transparent
+  );
+
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+
+  transform: translateX(-50%);
+
+  transition: left 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* hover a face: it takes over, the other one fades back */
+@media (hover: hover) {
+  .two-faces-split:hover .face-panel-image {
+    filter: brightness(0.4) saturate(0.8);
+  }
+
+  .two-faces-split .face-panel:hover {
+    flex: 1.5;
+  }
+
+  .two-faces-split .face-panel:hover .face-panel-image {
+    filter: brightness(1) saturate(1.2);
+  }
+
+  .two-faces-split:has(.face-panel-blue:hover) .two-faces-seam {
+    left: 60%;
+  }
+
+  .two-faces-split:has(.face-panel-red:hover) .two-faces-seam {
+    left: 40%;
+  }
+}
+
+@media (max-width: 700px) {
+  .two-faces-split {
+    aspect-ratio: 4 / 5;
+  }
+
+  .face-panel-image {
+    background-position-y: 20%;
+  }
+
+  .two-faces-tagline {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+  }
+
+  .face-panel-name {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+  }
+
+  .face-panel-info small {
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
 }
 
 .about-copy {

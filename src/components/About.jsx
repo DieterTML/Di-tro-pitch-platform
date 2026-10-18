@@ -1,4 +1,5 @@
 import { artistData } from "../data/artistData";
+import TwoFaces from "./TwoFaces";
 
 function About() {
   return (
@@ -16,6 +17,8 @@ function About() {
           />
           ?
         </h2>
+
+        <TwoFaces />
 
         <div className="about-copy">
           {artistData.bio ? (
