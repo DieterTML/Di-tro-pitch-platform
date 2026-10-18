@@ -274,28 +274,6 @@ a {
   );
 }
 
-.section-logo {
-  position: relative;
-  z-index: 10;
-
-  height: 0;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-
-  pointer-events: none;
-}
-
-.section-logo img {
-  width: min(520px, 72vw);
-  height: auto;
-
-  transform: translateY(-68%);
-
-  filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.6));
-}
-
 /* fine moving film grain over the whole hero */
 .hero-grain {
   position: absolute;
@@ -506,6 +484,17 @@ a {
   font-size: clamp(34px, 8.6vw, 135px);
 
   white-space: nowrap;
+}
+
+/* the logo stands in for the word "Diètro" in the title */
+.about-title-logo {
+  display: inline-block;
+
+  height: 1.3em;
+  width: auto;
+  margin: 0 -0.05em 0 0.02em;
+
+  vertical-align: -0.12em;
 }
 
 .about-copy {

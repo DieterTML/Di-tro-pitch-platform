@@ -15,11 +15,6 @@ function App() {
       <main>
         <Hero />
 
-        {/* logo on the transition between the hero and "Who is Diètro?" */}
-        <div className="section-logo" aria-hidden="true">
-          <img src="/media/branding/dietro-logo.png" alt="" />
-        </div>
-
         <About />
         <References />
         <Music />

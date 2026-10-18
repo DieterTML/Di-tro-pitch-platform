@@ -10,11 +10,11 @@ function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      // only show the corner logo once the big logo between the hero and
-      // "Who is Diètro?" has scrolled up behind the navbar
-      const sectionLogo = document.querySelector(".section-logo img");
+      // only show the corner logo once the logo in the "Who is Diètro?"
+      // title has scrolled up behind the navbar
+      const titleLogo = document.querySelector(".about-title-logo");
       setShowLogo(
-        sectionLogo ? sectionLogo.getBoundingClientRect().bottom < 70 : true
+        titleLogo ? titleLogo.getBoundingClientRect().bottom < 70 : true
       );
     };
 
