@@ -550,14 +550,12 @@ a {
 
   display: flex;
 
-  width: min(100%, 720px);
+  width: min(100%, 760px);
   margin: 0 auto;
 
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1024 / 1290;
 
   overflow: hidden;
-
-  background: var(--black);
 }
 
 .face-panel {
@@ -580,6 +578,21 @@ a {
   background-repeat: no-repeat;
   background-size: 100cqw auto;
 
+  /* no frame: the photo fades into the black page, like the hero. The
+     mask is sized and anchored like the photo, so both halves line up */
+  --face-mask: radial-gradient(
+    ellipse 58% 60% at 50% 44%,
+    black 66%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: var(--face-mask);
+  mask-image: var(--face-mask);
+  -webkit-mask-size: 100cqw calc(100cqw * 1290 / 1024);
+  mask-size: 100cqw calc(100cqw * 1290 / 1024);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
   filter: brightness(0.75) saturate(1.1);
 
   transition:
@@ -589,10 +602,14 @@ a {
 
 .face-panel-blue .face-panel-image {
   background-position: left 50%;
+  -webkit-mask-position: left 50%;
+  mask-position: left 50%;
 }
 
 .face-panel-red .face-panel-image {
   background-position: right 50%;
+  -webkit-mask-position: right 50%;
+  mask-position: right 50%;
 }
 
 .face-panel::after {
@@ -604,16 +621,8 @@ a {
   pointer-events: none;
 }
 
-.face-panel-blue::after {
-  background:
-    linear-gradient(to top, rgba(3, 4, 7, 0.95), transparent 55%),
-    radial-gradient(circle at 0% 60%, rgba(0, 118, 255, 0.35), transparent 55%);
-}
-
-.face-panel-red::after {
-  background:
-    linear-gradient(to top, rgba(3, 4, 7, 0.95), transparent 55%),
-    radial-gradient(circle at 100% 60%, rgba(255, 0, 26, 0.35), transparent 55%);
+.face-panel::after {
+  background: linear-gradient(to top, rgba(3, 4, 7, 0.9), transparent 40%);
 }
 
 .face-panel-info {
