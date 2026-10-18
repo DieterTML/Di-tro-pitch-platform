@@ -10,21 +10,29 @@ export const artistData = {
 
   bio: "",
 
-  // "2 FACES": the two sides of Diètro, matching the blue and red light
-  // on the photo (blue on the left of the face, red on the right). The
-  // genres are projected onto the face in the photo itself.
+  // "2 FACES": the two musical identities of Diètro. The genres match the
+  // ones projected onto the face in the photo; blue is the left of the
+  // face, red the right.
   twoFaces: {
-    image: "/media/two-faces/2-faces.jpg",
+    intro: "Two musical identities. One artist.",
+    images: {
+      blue: "/media/two-faces/2-faces-blue.jpg",
+      red: "/media/two-faces/2-faces-red.jpg",
+    },
     faces: [
       {
         side: "blue",
         name: "BLUE FACE",
         mood: "Darkness & Intensity",
+        genres: ["Techno", "Electronic", "Trance"],
+        line: "The underground side. Dark, hypnotic, relentless.",
       },
       {
         side: "red",
         name: "RED FACE",
         mood: "Energy & Emotion",
+        genres: ["Dance", "House", "Pop"],
+        line: "The festival side. Euphoric, melodic, made for the crowd.",
       },
     ],
   },

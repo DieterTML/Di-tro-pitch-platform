@@ -519,7 +519,7 @@ a {
 
 .two-faces-title {
   width: fit-content;
-  margin: 0 auto 40px;
+  margin: 0 auto;
 
   /* the trailing letter-spacing would push the text off-centre */
   padding-left: 0.18em;
@@ -542,182 +542,241 @@ a {
   color: transparent;
 }
 
-.two-faces-split {
+.two-faces-intro {
+  margin: 18px 0 10px;
+
+  color: var(--grey);
+
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+/* the picture: red face underneath, blue face on top, cut off at --split */
+.two-faces-frame {
   position: relative;
 
-  /* lets both halves size the photo to the full split width */
-  container-type: inline-size;
-
-  display: flex;
-
-  width: min(100%, 760px);
+  width: min(100%, 720px);
   margin: 0 auto;
 
-  aspect-ratio: 1024 / 1290;
+  aspect-ratio: 1024 / 1570;
 
-  overflow: hidden;
+  cursor: ew-resize;
+
+  /* horizontal drags move the slider, vertical swipes still scroll */
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.face-panel {
-  position: relative;
-
-  flex: 1;
-
-  overflow: hidden;
-
-  transition: flex 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-/* one photo across both panels: blue panel anchors it left, red right,
-   so together they rebuild the full face */
-.face-panel-image {
+.two-faces-image {
   position: absolute;
   inset: 0;
 
-  background-image: var(--two-faces-image);
-  background-repeat: no-repeat;
-  background-size: 100cqw auto;
+  width: 100%;
+  height: 100%;
 
-  /* no frame: the photo fades into the black page, like the hero. The
-     mask is sized and anchored like the photo, so both halves line up */
-  --face-mask: radial-gradient(
-    ellipse 58% 60% at 50% 44%,
-    black 66%,
+  pointer-events: none;
+
+  /* no frame: the photo fades into the black page, like the hero */
+  -webkit-mask-image: radial-gradient(
+    ellipse 56% 52% at 50% 44%,
+    black 68%,
     transparent 100%
   );
-
-  -webkit-mask-image: var(--face-mask);
-  mask-image: var(--face-mask);
-  -webkit-mask-size: 100cqw calc(100cqw * 1290 / 1024);
-  mask-size: 100cqw calc(100cqw * 1290 / 1024);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-
-  filter: brightness(0.75) saturate(1.1);
-
-  transition:
-    filter 0.8s ease,
-    transform 1.2s ease;
+  mask-image: radial-gradient(
+    ellipse 56% 52% at 50% 44%,
+    black 68%,
+    transparent 100%
+  );
 }
 
-.face-panel-blue .face-panel-image {
-  background-position: left 50%;
-  -webkit-mask-position: left 50%;
-  mask-position: left 50%;
+.two-faces-image-blue {
+  clip-path: inset(0 calc(100% - var(--split)) 0 0);
 }
 
-.face-panel-red .face-panel-image {
-  background-position: right 50%;
-  -webkit-mask-position: right 50%;
-  mask-position: right 50%;
+/* the line you drag */
+.two-faces-handle {
+  position: absolute;
+  z-index: 2;
+  top: 4%;
+  bottom: 4%;
+  left: var(--split);
+
+  width: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateX(-50%);
+
+  outline: none;
 }
 
-.face-panel::after {
+.two-faces-handle::before {
   content: "";
 
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
 
-  pointer-events: none;
+  width: 3px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--dietro-blue) 20%,
+    white 50%,
+    var(--dietro-red) 80%,
+    transparent
+  );
+
+  box-shadow:
+    0 0 14px rgba(255, 255, 255, 0.5),
+    0 0 40px rgba(255, 255, 255, 0.2);
+
+  transform: translateX(-50%);
 }
 
-.face-panel::after {
-  background: linear-gradient(to top, rgba(3, 4, 7, 0.9), transparent 40%);
-}
+.two-faces-knob {
+  position: relative;
 
-.face-panel-info {
-  position: absolute;
-  z-index: 2;
-  bottom: clamp(20px, 4vw, 48px);
+  width: 58px;
+  height: 58px;
 
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(var(--black), var(--black)) padding-box,
+    linear-gradient(90deg, var(--dietro-blue), var(--dietro-red)) border-box;
+
+  border: 2px solid transparent;
+
+  color: white;
+
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+
+  transition: transform 0.2s ease;
 }
 
-.face-panel-blue .face-panel-info {
-  left: clamp(18px, 4vw, 48px);
+.two-faces-frame:hover .two-faces-knob,
+.two-faces-handle:focus-visible .two-faces-knob {
+  transform: scale(1.1);
 }
 
-.face-panel-red .face-panel-info {
-  right: clamp(18px, 4vw, 48px);
-
-  align-items: flex-end;
-  text-align: right;
+.two-faces-handle:focus-visible::before {
+  width: 5px;
 }
 
-.face-panel-name {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.4em;
+/* the two faces, under the picture */
+.two-faces-captions {
+  position: relative;
+
+  width: min(100%, 720px);
+  margin: 10px auto 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }
 
-.face-panel-blue .face-panel-name {
-  color: var(--dietro-blue);
-}
+.two-faces-captions::before {
+  content: "";
 
-.face-panel-red .face-panel-name {
-  color: var(--dietro-red);
-}
-
-.face-panel-info strong {
-  font-size: clamp(16px, 2.3vw, 34px);
-  font-weight: 800;
-  line-height: 1.1;
-}
-
-/* where the two faces meet */
-.two-faces-seam {
   position: absolute;
-  z-index: 3;
-  top: 8%;
-  bottom: 8%;
+  top: 0;
+  bottom: 0;
   left: 50%;
 
   width: 1px;
 
   background: linear-gradient(
     to bottom,
-    transparent,
     var(--dietro-blue),
-    var(--dietro-red),
-    transparent
+    var(--dietro-red)
   );
 
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
-
-  transform: translateX(-50%);
-
-  transition: left 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  opacity: 0.5;
 }
 
-/* hover a face: it takes over, the other one fades back */
-@media (hover: hover) {
-  .two-faces-split:hover .face-panel-image {
-    filter: brightness(0.4) saturate(0.8);
-  }
+.face-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
-  .two-faces-split .face-panel:hover {
-    flex: 1.5;
-  }
+  transition: opacity 0.3s ease;
+}
 
-  .two-faces-split .face-panel:hover .face-panel-image {
-    filter: brightness(1) saturate(1.2);
-  }
+.face-caption-red {
+  align-items: flex-end;
+  text-align: right;
+}
 
-  .two-faces-split:has(.face-panel-blue:hover) .two-faces-seam {
-    left: 60%;
-  }
+.face-caption-name {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.4em;
+}
 
-  .two-faces-split:has(.face-panel-red:hover) .two-faces-seam {
-    left: 40%;
-  }
+.face-caption-blue .face-caption-name {
+  color: var(--dietro-blue);
+}
+
+.face-caption-red .face-caption-name {
+  color: var(--dietro-red);
+}
+
+.face-caption strong {
+  font-size: clamp(17px, 2.2vw, 28px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.face-caption-genres {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.face-caption p {
+  max-width: 280px;
+
+  color: var(--grey);
+
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 @media (max-width: 700px) {
-  .face-panel-name {
+  .two-faces-captions {
+    gap: 24px;
+  }
+
+  .face-caption-name {
     font-size: 9px;
     letter-spacing: 0.25em;
+  }
+
+  .face-caption-genres {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .face-caption p {
+    font-size: 11px;
+  }
+
+  .two-faces-knob {
+    width: 48px;
+    height: 48px;
   }
 }
 
