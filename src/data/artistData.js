@@ -24,8 +24,6 @@ export const artistData = {
       {
         side: "blue",
         name: "BLUE SIDE",
-        genres: ["Techno", "Electronic", "Trance"],
-        line: "Where the lights go out. Deep, raw and relentless.",
         // shown when the blue face takes over
         story:
           "Step into the darker side of Diètro. A world where techno, trance and electronic sounds collide. Driven by powerful basslines, rhythms and raw underground energy.",
@@ -33,8 +31,6 @@ export const artistData = {
       {
         side: "red",
         name: "RED SIDE",
-        genres: ["Dance", "House", "Pop"],
-        line: "Where the energy rises. Euphoric, warm and full of emotion.",
         // shown when the red face takes over
         story:
           "Discover the commercial side of Diètro. Filled with melodies, uplifting rhythms and feel-good energy. A place where dance, house and pop come together.",

@@ -19,23 +19,22 @@ function About() {
           ?
         </h2>
 
-        <TwoFaces />
-
-        <TwoFacesEvent />
-
+        {/* bio next to the key details */}
         <div className="about-copy">
-          {artistData.bio ? (
-            <p>{artistData.bio}</p>
-          ) : (
-            <>
-              <h3>NEW ARTIST STORY COMING SOON.</h3>
+          <div className="about-story">
+            {artistData.bio ? (
+              <p>{artistData.bio}</p>
+            ) : (
+              <>
+                <h3>NEW ARTIST STORY COMING SOON.</h3>
 
-              <p>
-                Updated 2026 biography, career highlights and artist
-                positioning will be added here.
-              </p>
-            </>
-          )}
+                <p>
+                  Updated 2026 biography, career highlights and artist
+                  positioning will be added here.
+                </p>
+              </>
+            )}
+          </div>
 
           <div className="about-details">
             <div>
@@ -49,17 +48,11 @@ function About() {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="large-photo">
-        <img
-          src="/media/artist/portrait-01.jpg"
-          alt="Diètro"
-        />
-
-        <div className="image-placeholder">
-          <span>ARTIST PHOTO</span>
-          <small>portrait-01.jpg</small>
+        {/* the concept and the event, side by side */}
+        <div className="about-showcase">
+          <TwoFaces />
+          <TwoFacesEvent />
         </div>
       </div>
     </section>

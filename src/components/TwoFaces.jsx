@@ -132,10 +132,6 @@ function TwoFaces() {
             style={{ opacity: 1 - ramp(focus, 0.1, 0.4) }}
           >
             <span className="face-caption-name">{face.name}</span>
-            <span className="face-caption-genres">
-              {face.genres.join(" · ")}
-            </span>
-            <p>{face.line}</p>
           </div>
         ))}
 
