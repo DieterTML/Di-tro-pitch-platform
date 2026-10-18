@@ -481,7 +481,19 @@ a {
 
 /* one line, sized to always fit the width */
 .about-title {
+  --section-padding-top: 140px;
+
+  /* above the hero's photo and light layers */
+  position: relative;
+  z-index: 10;
+
+  /* pull the title up so its middle lands on the edge of the hero */
+  margin-top: calc(-1 * var(--section-padding-top) - 0.65em);
+
+  align-self: center;
+
   font-size: clamp(34px, 8.6vw, 135px);
+  text-align: center;
 
   white-space: nowrap;
 }
@@ -1195,6 +1207,10 @@ a {
 
   .about-header {
     gap: 50px;
+  }
+
+  .about-title {
+    --section-padding-top: 100px;
   }
 
   .about-copy {

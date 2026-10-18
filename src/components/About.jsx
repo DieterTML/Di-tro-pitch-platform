@@ -6,19 +6,16 @@ function About() {
       <div className="section-index">01</div>
 
       <div className="about-header">
-        <div>
-          <p className="eyebrow">THE ARTIST</p>
-
-          <h2 className="huge-title about-title">
-            WHO IS{" "}
-            <img
-              className="about-title-logo"
-              src="/media/branding/dietro-logo.png"
-              alt="Diètro"
-            />
-            ?
-          </h2>
-        </div>
+        {/* sits on the transition between the hero and this section */}
+        <h2 className="huge-title about-title">
+          WHO IS{" "}
+          <img
+            className="about-title-logo"
+            src="/media/branding/dietro-logo.png"
+            alt="Diètro"
+          />
+          ?
+        </h2>
 
         <div className="about-copy">
           {artistData.bio ? (
