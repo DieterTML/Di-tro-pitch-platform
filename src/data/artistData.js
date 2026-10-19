@@ -74,7 +74,8 @@ export const artistData = {
       year: "2026",
       title: "TOMORROWLAND",
       location: "The Great Library",
-      image: "/media/references/tomorrowland.jpg",
+      video: "/media/references/tomorrowland.mp4",
+      poster: "/media/references/tomorrowland.jpg",
     },
     {
       year: "2026",
