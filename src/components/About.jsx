@@ -37,7 +37,7 @@ function About() {
           ?
         </h2>
 
-        {/* bio next to the key details */}
+        {/* introduction */}
         <div className="about-copy">
           <div className="about-story">
             {artistData.bio ? (
@@ -52,18 +52,6 @@ function About() {
                 </p>
               </>
             )}
-          </div>
-
-          <div className="about-details">
-            <div>
-              <span>BASED IN</span>
-              <strong>BELGIUM</strong>
-            </div>
-
-            <div>
-              <span>ARTIST</span>
-              <strong>DJ / PRODUCER</strong>
-            </div>
           </div>
         </div>
 

@@ -1027,16 +1027,12 @@ a {
   }
 }
 
-/* bio on the left, details on the right */
+/* the introduction, centred under the title */
 .about-copy {
-  width: min(100%, 1150px);
+  width: min(100%, 900px);
   margin: 0 auto;
 
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  align-items: end;
-
-  gap: clamp(30px, 6vw, 90px);
+  text-align: center;
 }
 
 .about-copy h3 {
@@ -1060,8 +1056,8 @@ a {
 
   color: rgba(255, 255, 255, 0.78);
 
-  font-size: clamp(15px, 1.35vw, 19px);
-  line-height: 1.75;
+  font-size: clamp(14px, 1.15vw, 16px);
+  line-height: 1.8;
 }
 
 /* festival names: white, bold, with a blue-to-red underline */
@@ -1074,34 +1070,6 @@ a {
     no-repeat left bottom / 100% 2px;
 
   padding-bottom: 2px;
-}
-
-.about-details {
-  padding-left: 30px;
-
-  display: flex;
-  gap: 60px;
-
-  border-left: 1px solid var(--border);
-}
-
-.about-details div {
-  display: flex;
-  flex-direction: column;
-
-  gap: 7px;
-}
-
-.about-details span {
-  color: var(--grey);
-
-  font-size: 8px;
-  letter-spacing: 0.18em;
-}
-
-.about-details strong {
-  font-size: 11px;
-  letter-spacing: 0.1em;
 }
 
 /* ================================
@@ -1698,17 +1666,6 @@ a {
     --section-padding-top: 100px;
   }
 
-  .about-copy {
-    grid-template-columns: 1fr;
-  }
-
-  .about-details {
-    padding: 30px 0 0;
-
-    border-left: 0;
-    border-top: 1px solid var(--border);
-  }
-
   .section-header {
     flex-direction: column;
     align-items: flex-start;
@@ -1759,12 +1716,6 @@ a {
 @media (max-width: 550px) {
   .nav-logo {
     height: 44px;
-  }
-
-  .about-details {
-    flex-direction: column;
-
-    gap: 25px;
   }
 
   .showreel {
