@@ -129,8 +129,12 @@ export const artistData = {
     email: "hello@dietromusic.com",
     phone: "+32 489 28 70 15",
     website: "www.dietromusic.com",
-    instagram: "",
-    spotify: "",
-    tiktok: "",
+    // social media shown under Contact (in this order); add more here
+    socials: [
+      { name: "Instagram", url: "https://www.instagram.com/dietromusic/" },
+      { name: "TikTok", url: "https://www.tiktok.com/@dietromusic" },
+      { name: "Spotify", url: "https://open.spotify.com/artist/5qH3F8PeTa9G7XNNHxIDhW" },
+      { name: "SoundCloud", url: "https://soundcloud.com/user-172699239" },
+    ],
   },
 };

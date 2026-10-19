@@ -1,5 +1,18 @@
-import { Mail, Music2 } from "lucide-react";
+import { Mail } from "lucide-react";
+import {
+  InstagramIcon,
+  SoundCloudIcon,
+  SpotifyIcon,
+  TikTokIcon,
+} from "./SocialIcons";
 import { artistData } from "../data/artistData";
+
+const socialIcons = {
+  Instagram: InstagramIcon,
+  TikTok: TikTokIcon,
+  Spotify: SpotifyIcon,
+  SoundCloud: SoundCloudIcon,
+};
 
 function Contact() {
   return (
@@ -27,12 +40,22 @@ function Contact() {
         </a>
 
         <div className="socials">
-          <a
-            href={artistData.contact.spotify || "#"}
-            aria-label="Music"
-          >
-            <Music2 size={20} />
-          </a>
+          {artistData.contact.socials.map((social) => {
+            const SocialIcon = socialIcons[social.name];
+
+            return (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Diètro on ${social.name}`}
+              >
+                {SocialIcon && <SocialIcon size={18} />}
+                <span>{social.name}</span>
+              </a>
+            );
+          })}
         </div>
       </div>
 
