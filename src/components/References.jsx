@@ -1,8 +1,24 @@
-import { Play } from "lucide-react";
 import { artistData } from "../data/artistData";
 import AutoplayVideo from "./AutoplayVideo";
 
+// SoundCloud's embeddable player for a track / set link
+const soundCloudPlayer = (url) =>
+  "https://w.soundcloud.com/player/?" +
+  new URLSearchParams({
+    url,
+    color: "#ff001a",
+    auto_play: "false",
+    hide_related: "true",
+    show_comments: "false",
+    show_reposts: "false",
+    show_teaser: "false",
+    visual: "true",
+  });
+
 function References() {
+  // only sets that have a SoundCloud link are shown
+  const liveSets = artistData.liveSets.filter((set) => set.url);
+
   return (
     <>
       <section className="section live-section" id="references">
@@ -13,10 +29,6 @@ function References() {
             <p className="eyebrow">SELECTED SHOWS & MOMENTS</p>
             <h2 className="huge-title">REFERENCES.</h2>
           </div>
-
-          <p className="section-intro">
-            A selection of the stages Diètro has played.
-          </p>
         </div>
 
         <div className="live-grid">
@@ -55,28 +67,33 @@ function References() {
         </div>
       </section>
 
-      <section className="showreel">
-        <div className="showreel-background">
-          <img
-            src="/media/live/showreel.jpg"
-            alt=""
-          />
-        </div>
+      {/* full DJ sets on SoundCloud */}
+      {liveSets.length > 0 && (
+        <section className="section live-sets" aria-labelledby="live-sets-title">
+          <p className="eyebrow">LISTEN BACK</p>
+          <h3 className="live-sets-title" id="live-sets-title">
+            DIÈTRO LIVE
+          </h3>
 
-        <div className="showreel-overlay" />
+          <div className="live-sets-grid">
+            {liveSets.map((set) => (
+              <article className="live-set" key={set.url}>
+                <div className="live-set-heading">
+                  <strong>{set.title}</strong>
+                  <span>{set.stage}</span>
+                </div>
 
-        <button
-          className="showreel-play"
-          aria-label="Play Diètro live showreel"
-        >
-          <Play size={28} fill="currentColor" />
-        </button>
-
-        <div className="showreel-copy">
-          <span>WATCH</span>
-          <strong>DIÈTRO LIVE</strong>
-        </div>
-      </section>
+                <iframe
+                  title={`Diètro live at ${set.title}, ${set.stage}`}
+                  src={soundCloudPlayer(set.url)}
+                  allow="autoplay"
+                  loading="lazy"
+                />
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
     </>
   );
 }

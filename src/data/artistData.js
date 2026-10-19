@@ -93,6 +93,21 @@ export const artistData = {
     },
   ],
 
+  // DIÈTRO LIVE: full sets on SoundCloud. Paste the SoundCloud link of each
+  // set in "url"; a set without a link is not shown.
+  liveSets: [
+    {
+      title: "TOMORROWLAND",
+      stage: "The Great Library",
+      url: "https://soundcloud.com/user-172699239/dietro-tomorrowland-2026-the",
+    },
+    {
+      title: "ROCK WERCHTER",
+      stage: "The Towers",
+      url: "https://soundcloud.com/user-172699239/dietro-rock-werchter-the",
+    },
+  ],
+
   releases: [
     {
       title: "",
