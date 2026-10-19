@@ -214,7 +214,9 @@ a {
   border: 0;
   background: none;
 
-  font-size: 45px;
+  /* sized so every item, also "WHO IS DIÈTRO?", stays on one line */
+  font-size: clamp(24px, 7.5vw, 45px);
+  white-space: nowrap;
   font-weight: 900;
 
   cursor: pointer;
@@ -888,7 +890,7 @@ a {
 
 .two-faces-event {
   width: min(100%, 1100px);
-  margin: 90px auto 0;
+  margin: 0 auto;
 
   text-align: center;
 }
@@ -1585,7 +1587,7 @@ a {
   }
 
   .section {
-    padding: 100px 22px;
+    padding: 72px 20px;
   }
 
   .section-index {
@@ -1597,10 +1599,21 @@ a {
   }
 
   .about-title {
-    --section-padding-top: 100px;
+    --section-padding-top: 72px;
+  }
+
+  .about-showcase {
+    gap: 56px;
+  }
+
+  /* the vertical aftermovie doesn't need the full phone width */
+  .event-video-portrait {
+    width: min(80%, 340px);
   }
 
   .section-header {
+    margin-bottom: 36px;
+
     flex-direction: column;
     align-items: flex-start;
 
@@ -1612,20 +1625,41 @@ a {
   }
 
   .live-card {
-    min-height: 520px;
+    min-height: 0;
+
+    aspect-ratio: 4 / 5;
+  }
+
+  .live-sets {
+    padding-top: 0;
+  }
+
+  .live-sets-title {
+    margin-bottom: 28px;
   }
 
   .release-grid {
     grid-template-columns: 1fr;
 
-    gap: 50px;
+    gap: 44px;
   }
 
   .contact-section {
-    padding: 120px 22px 25px;
+    /* on phones the footer follows the buttons instead of the screen bottom */
+    min-height: 0;
+
+    padding: 80px 20px 24px;
+  }
+
+  /* the bottom of the 2 FACES picture is only black fade; let the next
+     block move up into it (the story text still fits above) */
+  .two-faces-frame {
+    margin-bottom: -10vw;
   }
 
   .contact-section footer {
+    margin-top: 64px;
+
     flex-direction: column;
 
     gap: 12px;
