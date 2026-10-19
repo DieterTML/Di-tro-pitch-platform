@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# original photos and videos (too big for GitHub; the site uses the
+# web versions in public/media)
+source-images/
