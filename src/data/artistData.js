@@ -52,21 +52,6 @@ export const artistData = {
     },
   },
 
-  stats: [
-    {
-      value: "",
-      label: "SPOTIFY STREAMS",
-    },
-    {
-      value: "",
-      label: "TIKTOK VIEWS",
-    },
-    {
-      value: "",
-      label: "INSTAGRAM VIEWS",
-    },
-  ],
-
   // References: each one shows a photo (image) or a looping video (video,
   // with a poster still for while it loads)
   highlights: [
@@ -108,27 +93,32 @@ export const artistData = {
     },
   ],
 
+  // MUSIC: each release is played on the site with the Spotify or
+  // SoundCloud player of its link. "support" lists
+  // the big names that played / supported the track.
   releases: [
     {
-      title: "",
-      artists: "",
-      label: "",
-      artwork: "/media/releases/release-01.jpg",
-      link: "",
+      title: "ME & U",
+      artists: "Diètro, Double R",
+      year: "2025",
+      platform: "Spotify",
+      link: "https://open.spotify.com/track/5dkNu5zjxJ7fy7jsR3R5en",
     },
     {
-      title: "",
-      artists: "",
-      label: "",
-      artwork: "/media/releases/release-02.jpg",
-      link: "",
+      title: "LEAVEMEALONE",
+      version: "Sven & Clé X Diètro Edit",
+      artists: "Sven & Clé, Diètro",
+      year: "2024",
+      platform: "SoundCloud · Free download",
+      link: "https://soundcloud.com/user-172699239/leavemealone-sven-cle-x-dietro-edit-extended-in-free-download",
+      support: ["Dimitri Vegas & Like Mike", "Michael Amani"],
     },
     {
-      title: "",
-      artists: "",
-      label: "",
-      artwork: "/media/releases/release-03.jpg",
-      link: "",
+      title: "ARABIAN NIGHTS",
+      artists: "Bassjackers, Diètro",
+      year: "2021",
+      platform: "Spotify",
+      link: "https://open.spotify.com/track/3e9lh8yGoVFBfOWt9e3imb",
     },
   ],
 

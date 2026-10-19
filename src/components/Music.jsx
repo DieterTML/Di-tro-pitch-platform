@@ -1,9 +1,9 @@
-import { ArrowUpRight, Music2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { artistData } from "../data/artistData";
+import { playerFor } from "../utils/embeds";
 
 function Music() {
   return (
-    <>
       <section className="section music-section" id="music">
         <div className="section-index">03</div>
 
@@ -12,70 +12,56 @@ function Music() {
             <p className="eyebrow">SELECTED RELEASES</p>
             <h2 className="huge-title">MUSIC.</h2>
           </div>
-
-          <p className="section-intro">
-            New music and selected releases will be added here.
-          </p>
         </div>
 
         <div className="release-grid">
           {artistData.releases.map((release, index) => (
-            <article className="release-card" key={index}>
-              <div className="release-artwork">
-                <img
-                  src={release.artwork}
-                  alt=""
+            <article className="release-card" key={release.link}>
+              <div className="release-player">
+                <iframe
+                  title={`${release.title} by ${release.artists}`}
+                  src={playerFor(release.link)}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
                 />
 
-                <div className="release-placeholder">
-                  <Music2 size={30} />
-                  <span>RELEASE ARTWORK</span>
-                </div>
-
-                <div className="release-hover">
-                  <ArrowUpRight size={25} />
-                </div>
+                {release.support && (
+                  <span className="release-support-tag">SUPPORTED</span>
+                )}
               </div>
 
               <div className="release-info">
-                <span>0{index + 1}</span>
+                <span>{String(index + 1).padStart(2, "0")}</span>
 
                 <div>
-                  <h3>
-                    {release.title || "RELEASE TO BE ADDED"}
-                  </h3>
+                  <h3>{release.title}</h3>
 
-                  {release.artists && (
-                    <p>{release.artists}</p>
+                  {release.version && (
+                    <p className="release-version">{release.version}</p>
                   )}
 
-                  {release.label && (
-                    <small>{release.label}</small>
-                  )}
+                  <p>{release.artists}</p>
+
+                  <small>
+                    {release.year} ·{" "}
+                    <a href={release.link} target="_blank" rel="noopener noreferrer">
+                      {release.platform}
+                      <ArrowUpRight size={11} />
+                    </a>
+                  </small>
                 </div>
               </div>
+
+              {release.support && (
+                <div className="release-support">
+                  <span>SUPPORTED BY</span>
+                  <strong>{release.support.join(" · ")}</strong>
+                </div>
+              )}
             </article>
           ))}
         </div>
       </section>
-
-      <section className="numbers-section">
-        <p className="eyebrow">THE NUMBERS</p>
-
-        <div className="stats-grid">
-          {artistData.stats.map((stat, index) => (
-            <div className="stat" key={index}>
-              <strong>{stat.value || "—"}</strong>
-              <span>{stat.label}</span>
-            </div>
-          ))}
-        </div>
-
-        <p className="numbers-note">
-          UPDATED 2026 NUMBERS TO BE ADDED
-        </p>
-      </section>
-    </>
   );
 }
 

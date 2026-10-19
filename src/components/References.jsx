@@ -1,19 +1,6 @@
 import { artistData } from "../data/artistData";
 import AutoplayVideo from "./AutoplayVideo";
-
-// SoundCloud's embeddable player for a track / set link
-const soundCloudPlayer = (url) =>
-  "https://w.soundcloud.com/player/?" +
-  new URLSearchParams({
-    url,
-    color: "#ff001a",
-    auto_play: "false",
-    hide_related: "true",
-    show_comments: "false",
-    show_reposts: "false",
-    show_teaser: "false",
-    visual: "true",
-  });
+import { soundCloudPlayer } from "../utils/embeds";
 
 function References() {
   // only sets that have a SoundCloud link are shown
