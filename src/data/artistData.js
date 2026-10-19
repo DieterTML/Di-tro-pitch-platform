@@ -67,24 +67,28 @@ export const artistData = {
     },
   ],
 
+  // References: each one shows a photo (image) or a looping video (video,
+  // with a poster still for while it loads)
   highlights: [
     {
       year: "2026",
-      title: "",
-      location: "",
-      image: "/media/live/live-01.jpg",
+      title: "TOMORROWLAND",
+      location: "The Great Library",
+      image: "/media/references/tomorrowland.jpg",
     },
     {
       year: "2026",
-      title: "",
-      location: "",
-      image: "/media/live/live-02.jpg",
+      title: "ROCK WERCHTER",
+      location: "The Towers",
+      video: "/media/references/rock-werchter.mp4",
+      poster: "/media/references/rock-werchter.jpg",
     },
     {
-      year: "2026",
-      title: "",
-      location: "",
-      image: "/media/live/live-03.jpg",
+      year: "2024",
+      title: "NOA BEACH CLUB",
+      location: "Croatia",
+      video: "/media/references/noa-beach-club.mp4",
+      poster: "/media/references/noa-beach-club.jpg",
     },
   ],
 

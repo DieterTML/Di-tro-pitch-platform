@@ -1,5 +1,6 @@
 import { Play } from "lucide-react";
 import { artistData } from "../data/artistData";
+import AutoplayVideo from "./AutoplayVideo";
 
 function References() {
   return (
@@ -14,23 +15,32 @@ function References() {
           </div>
 
           <p className="section-intro">
-            Selected 2026 shows, festivals and highlights will be added here.
+            A selection of the stages Diètro has played.
           </p>
         </div>
 
         <div className="live-grid">
-          {artistData.highlights.map((show, index) => (
-            <article className="live-card" key={index}>
-              <img src={show.image} alt="" />
-
-              <div className="live-placeholder">
-                LIVE PHOTO {String(index + 1).padStart(2, "0")}
-              </div>
+          {artistData.highlights.map((show) => (
+            <article className="live-card" key={show.title}>
+              {show.video ? (
+                <AutoplayVideo
+                  className="live-media"
+                  src={show.video}
+                  poster={show.poster}
+                  label={`Diètro at ${show.title}`}
+                />
+              ) : (
+                <img
+                  className="live-media"
+                  src={show.image}
+                  alt={`Diètro at ${show.title}, ${show.location}`}
+                />
+              )}
 
               <div className="live-overlay" />
 
               <div className="live-info">
-                <span>{show.year}</span>
+                {show.year && <span>{show.year}</span>}
 
                 <h3>
                   {show.title || "SHOW TO BE ADDED"}

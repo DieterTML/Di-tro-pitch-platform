@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
 import { Play } from "lucide-react";
 import { artistData } from "../data/artistData";
+import AutoplayVideo from "./AutoplayVideo";
 
 // turns a YouTube watch / share link into an embeddable one
 const youTubeEmbed = (url) => {
@@ -15,32 +15,6 @@ function TwoFacesEvent() {
   const { details, aftermovie, poster, orientation } =
     artistData.twoFaces.event;
   const embed = aftermovie ? youTubeEmbed(aftermovie) : null;
-  const videoRef = useRef(null);
-
-  // play automatically (muted, on a loop) while the video is on screen
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // browsers only allow autoplay for muted videos; React doesn't always
-    // apply the muted attribute, so set it on the element directly
-    video.muted = true;
-    video.defaultMuted = true;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="two-faces-event">
@@ -56,18 +30,12 @@ function TwoFacesEvent() {
             allowFullScreen
           />
         ) : aftermovie ? (
-          <video
-            ref={videoRef}
-            controls
-            muted
-            loop
-            playsInline
-            preload="metadata"
+          <AutoplayVideo
+            src={aftermovie}
             poster={poster}
-            aria-label="2 FACES aftermovie"
-          >
-            <source src={aftermovie} type="video/mp4" />
-          </video>
+            label="2 FACES aftermovie"
+            controls
+          />
         ) : (
           <div
             className="event-video-placeholder"
