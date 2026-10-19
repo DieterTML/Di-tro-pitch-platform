@@ -17,24 +17,41 @@ function Music() {
         <div className="release-grid">
           {artistData.releases.map((release, index) => (
             <article className="release-card" key={release.link}>
-              <div className="release-player">
+              <div
+                className={`release-player ${
+                  release.artwork ? "release-player-cover" : ""
+                }`}
+              >
+                {/* Spotify's player keeps its cover small, so the full-size
+                    cover is shown here with the compact player on top */}
+                {release.artwork && (
+                  <img
+                    className="release-cover"
+                    src={release.artwork}
+                    alt={`${release.title} cover`}
+                    loading="lazy"
+                  />
+                )}
+
                 <iframe
                   title={`${release.title} by ${release.artists}`}
                   src={playerFor(release.link)}
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
                 />
-
-                {release.support && (
-                  <span className="release-support-tag">SUPPORTED</span>
-                )}
               </div>
 
               <div className="release-info">
                 <span>{String(index + 1).padStart(2, "0")}</span>
 
                 <div>
-                  <h3>{release.title}</h3>
+                  <h3>
+                    {release.title}
+
+                    {release.support && (
+                      <span className="release-support-tag">SUPPORTED</span>
+                    )}
+                  </h3>
 
                   {release.version && (
                     <p className="release-version">{release.version}</p>

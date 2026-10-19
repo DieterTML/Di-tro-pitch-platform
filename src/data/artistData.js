@@ -94,7 +94,8 @@ export const artistData = {
   ],
 
   // MUSIC: each release is played on the site with the Spotify or
-  // SoundCloud player of its link. "support" lists
+  // SoundCloud player of its link. "artwork" (used for Spotify) shows the
+  // cover full size with the compact Spotify player on top of it. "support" lists
   // the big names that played / supported the track.
   releases: [
     {
@@ -103,6 +104,7 @@ export const artistData = {
       year: "2025",
       platform: "Spotify",
       link: "https://open.spotify.com/track/5dkNu5zjxJ7fy7jsR3R5en",
+      artwork: "/media/releases/me-and-u.jpg",
     },
     {
       title: "LEAVEMEALONE",
@@ -119,6 +121,7 @@ export const artistData = {
       year: "2021",
       platform: "Spotify",
       link: "https://open.spotify.com/track/3e9lh8yGoVFBfOWt9e3imb",
+      artwork: "/media/releases/arabian-nights.jpg",
     },
   ],
 
