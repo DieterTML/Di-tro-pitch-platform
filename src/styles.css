@@ -1065,6 +1065,9 @@ a {
 
 /* festival names: white, bold, with a blue-to-red underline */
 .about-highlight {
+  /* keep multi-word names like "Rock Werchter" together on one line */
+  white-space: nowrap;
+
   color: white;
 
   font-weight: 800;
@@ -1667,6 +1670,19 @@ a {
 }
 
 @media (max-width: 550px) {
+  /* phones are narrow: size the photo by width (not height), so the head
+     and the start of the shoulders show, like on desktop */
+  .hero {
+    min-height: 82svh;
+  }
+
+  .hero-portrait {
+    top: 7svh;
+
+    width: 165vw;
+    height: auto;
+  }
+
   .nav-logo {
     height: 44px;
   }
